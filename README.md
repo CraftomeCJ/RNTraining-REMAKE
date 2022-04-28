@@ -208,9 +208,9 @@ https://www.typescriptlang.org/docs/handbook/enums.html
 Error:
 [Unable to find expo in this project - have you run yarn / npm install yet?](https://stackoverflow.com/questions/67618967/unable-to-find-expo-in-this-project-have-you-run-yarn-npm-install-yet)
 
-**Day 3: Typescript Basics**
+**Day 3: Typescript Basics: Functions**
 
-- TypeScript Example:
+- TypeScript Functions Example:
 
 - Normal Function:
   - Understand how to create a typescript function and what are the mandatory part of the functions.
@@ -335,6 +335,10 @@ const sum = ({ x, y, z }: { x: number; y: number; z: number }): void => {
 }
 sum({x: 10, y: 20, z:30});
 ```
+
+
+
+
 
 <p align="center">(<a href="#top">back to top</a>)</p>
 
