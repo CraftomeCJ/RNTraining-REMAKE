@@ -336,6 +336,103 @@ const sum = ({ x, y, z }: { x: number; y: number; z: number }): void => {
 sum({x: 10, y: 20, z:30});
 ```
 
+**Day 4 Typescript Basics: Object Types**
+
+- Object Types Example:
+
+  - Interface as Object Type
+
+```TypeScript
+interface ObjectPerson 
+{
+  name: string;
+  age: number;
+}
+
+const greet = (person: ObjectPerson): string => {
+  return `Hello ${person.name} you are ${person.age} years old`;
+  //console.log(`Hello ${person.name}`);
+}
+```
+
+  - Type as Object Type
+
+```TypeScript
+type Person = 
+{
+  name: string;
+  age: number;
+};
+
+const greeter = (person: Person): string => 
+{
+  return `Hello ${person.name} you are ${person.age} years old`;
+}
+
+const jerry: Person = 
+{
+  name: "Jerry",
+  age: 30
+};
+console.log(greet(jerry));
+```
+
+  - Property Modifiers : 
+    - Optional: ?
+
+```TypeScript
+interface Person {
+ name: string;
+ age: number;
+ role?: string;
+}
+```
+
+    - cannot be modified: readonly
+
+```TypeScript
+interface Counter {
+  readonly name: string
+  readonly value: number
+  inc(): number
+}
+```
+
+  - Extending Type
+    - Extend
+
+```TypeScript
+interface BasicAddress {
+ name?: string;
+ street: string;
+ city: string;
+ country: string;
+ postalCode: string;
+}
+ 
+
+interface AddressWithUnit extends BasicAddress {
+ unit: string;
+}
+```
+
+  - Intersection Types
+    - &
+
+```TypeScript
+interface Colorful {
+   color: string;
+ }
+ interface Circle {
+   radius: number;
+ }
+
+ type ColorfulCircle = Colorful & Circle;
+
+ const colorCircle: ColorfulCircle = { color: "red", radius: 5 };
+ console.log("colorCircle", colorCircle);
+```
+
 <p align="center">(<a href="#top">back to top</a>)</p>
 
 ## Room to improve?
