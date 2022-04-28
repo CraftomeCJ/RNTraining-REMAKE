@@ -38,7 +38,7 @@ command: `npm run ios`
 #### for android:
 command: `npm run android`
 
-====================================================================================================
+==============================================================================
 <div id='top'><div>
 <h1 align="center">Today's Journal</h1>
 
@@ -62,6 +62,7 @@ command: `npm run android`
 Today will be working on setup my linux computer with all the necessary softwares for React Native Learning Course
 
 ## What I had learned today?
+Day 1:
 - Install vscode
 Go to https://code.visualstudio.com/docs?dv=osx
 Follow the steps to download and install vscode
@@ -103,7 +104,114 @@ react-native-starter
 - Push the cloned code to your own github account
 Follow the steps at https://stackoverflow.com/questions/18200248/cloning-a-repo-from-someone-elses-github-and-pushing-it-to-a-repo-on-my-github
 You should be able to see the react-native-starter project is in your RNTraining-REMAKE repo.
+
+Day 2:
+**What is React Native?**
+ - Javascript framework
+ - cross platform(ios & Android)
+ - native UI looking instead of webview
+ - JSX componets(TSX in our case)
+ 
+Visit the following page and understand the pros and cons of react native
+https://www.oreilly.com/library/view/learning-react-native/9781491929049/ch01.html
+You understand what is react native and why react native is a good choice to develop mobile apps.
+
+- How to run the react native project
+  1. go to your react-native-starter project in the terminal 
+  2. cd  react-native-starter
+  3. install the node modules 
+  4. npm i --legacy-peer-deps
+  5. in the prompt input 'y'
+  6. run  npm audit fix --force
+  7. run npm install -g expo-cli@5.3.1
+  8. yarn add expo
+  9. expo doctor --fix-dependencies
+  10. expo start
+  11. ctrl + click  http://localhost:19002
+  12. download expo app from Android Playstore
+  13. scan QR code
+  14. press 'a' open Android emulator
+
+You should be able to see the app running in the simulator and the Metro server is running for your app.
+
+- React Native Project File System
+  1. Go to the project root and type code .
+  2. You can have a look at the folders and files at the left side menu
+  3. /package.json and /package-lock.json : Find the and visit https://dev.to/naveenchandar/package-json-file-explained-b94 try to understand what’s inside the package.json
+  4. /android and /ios: Please note there are folders called android and ios, those folders contains the settings or the generated code for the android and ios
+  5. /node_modules: Please note there is a folder called node_modules, which contains all the necessary node modules for the RN apps. It will be created when you run `npm install`
+  6. /src: all the source code. Expand the src folder and have a look at the folders and files under src. You don’t need to understand what’s inside right now. It contains the main codes for the RN apps
+  7. Index.js: the entry file for the react native
+  8. __tests__: this is the the fold for all the unit tests
+  9. Other system files and config files such as .gitignore, prettierrc.js,  babel.config.js, jest.config.js…
+
+**Typescript Basics: Part 1**
+- TypeScript is a programming language built and maintained by Microsoft. It is a superset of JavaScript that adds strong type checking and is compiled into plain JavaScript code.
+- Refer to: https://www.freecodecamp.org/news/learn-typescript-basics/
+
+- What is Typescript?
+ 1. TypeScript Language: Syntax, Keywords, and type annotation
+ 2. TypeScript Compiler: transforme typescript to javascrip
+ 3. Language service: responsible for collecting type information from the source code.
+**filename suffix: .ts or .tsx**
+
+- Experience how typescript works:
+  1. Go to RNTraining project root in terminal
+  2. Type code .
+  3. In vscode navigate to src/screens/dashboard/info/index.tsx
+  4. Type line 6 and 7
+  5. Note that line 7 the num has a red underline. Move your cursor over num and you will see the type error.
+
+```TypeScript
+const Info: React.FC = () => {
+const a: string = "a";
+const num: number = "num";
+  return (
+    <View style={styles.container}>
+      <Text>
+        Info Page: You don't need to login to view this page
+      </Text>
+    </View>
+  );
+};
+```
+ts(2322) error
+![ts(2322 error)](https://github.com/CraftomeCJ/learningJournal/IMG/PNG/ts(2322)_error.png "style=width:200 height: 200")
+
+- Typescript BasicTypes:
+https://www.typescriptlang.org/docs/handbook/2/everyday-types.html
+  1. primitives: string , number , and boolean
+  2. Arrays: number[], string[]...
+  3. Any
+  4. Functions
+  5. Object Types  {x: number, y?: number}
+  6. Union Types: number | string
+  7. Type Aliases: type Point = { x: number; y: number; };
+  8. Interfaces: interface Point { x: number; y: number; };
+  9. Literal Types: “GET” | “POST”
+  10. null and undefined 
+  11. Enums: 
+https://www.typescriptlang.org/docs/handbook/enums.html
+
+- Follow the content of Everyday types and practice the types and functions in the list. 
+  1. Try to write some functions and Understand what is Anonymous Functions.
+  2. Try to use union type for your function and do the type check inside the function
+  3. Try to write interface and Understand what’s the difference between type and interface. We will have a lot of practice in lessons later.
+  4. Understand what what is Literal Types and how to solve the type error for literal types
+  5. Try to write some codes for enum
+
+- If have extra time, please go through https://www.typescriptlang.org/docs/handbook/2/narrowing.html and practice more one:
+  1. typeof type guards
+  2. The in operator
+  3. The instanceof check
+
+
+
+
 <p align="center">(<a href="#top">back to top</a>)</p>
+
+Error:
+[Unable to find expo in this project - have you run yarn / npm install yet?](https://stackoverflow.com/questions/67618967/unable-to-find-expo-in-this-project-have-you-run-yarn-npm-install-yet)
 
 ## Room to improve?
 
@@ -156,10 +264,11 @@ Created by:
   ### Resource Links
 [React Native Training Course Schedule](https://docs.google.com/document/d/1X1WgRPKxWwenKXswD5xHcuEZ4NFRj8EWmkCC8MLsBwg/edit#heading=h.2gbthfjx9c7r)
 [The Complete React Native + Hooks Course](https://nlbsg.udemy.com/course/the-complete-react-native-and-redux-course/learn/lecture/15706740#overview)
-[JavaScript basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics)
-[Intro to the TSConfig Reference](https://www.typescriptlang.org/tsconfig)
-[12 Exercises to Learn React Native](https://www.reactnativeschool.com/12-exercises-to-learn-react-native)
-[10 React JS Practice Exercises with solution](https://contactmentor.com/react-js-practice-exercises-solution/)
-[React Hooks](https://www.w3schools.com/react/react_hooks.asp)
-[CheatSheets for experienced React developers getting started with TypeScript](https://github.com/typescript-cheatsheets/react#reacttypescript-cheatsheets)
+
 [Day 1: Computer/Software/IDE Setup](https://docs.google.com/document/d/1Mdpnr2owPIfNweP-585h9gG_6qRJ7o5y29WdMhK35w0/edit#)
+
+[Day 2: React Native Training Course](https://docs.google.com/document/d/1xVfj6FU5U66KOUrjjZkWJ3uAaclqmt_RvZVPtJvKo6w/edit#)
+
+[Configure VM acceleration on Linux](https://developer.android.com/studio/run/emulator-acceleration?utm_source=android-studio#vm-linux)
+
+[Android Studio Emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
