@@ -434,6 +434,7 @@ interface Colorful {
  const colorCircle: ColorfulCircle = { color: "red", radius: 5 };
  console.log("colorCircle", colorCircle);
 ```
+<p align="center">(<a href="#top">back to top</a>)</p>
 
 **Day 4 Typescript Basics: Classes**
 
