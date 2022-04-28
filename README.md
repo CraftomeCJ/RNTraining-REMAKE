@@ -205,13 +205,138 @@ https://www.typescriptlang.org/docs/handbook/enums.html
   2. The in operator
   3. The instanceof check
 
-
-
-
-<p align="center">(<a href="#top">back to top</a>)</p>
-
 Error:
 [Unable to find expo in this project - have you run yarn / npm install yet?](https://stackoverflow.com/questions/67618967/unable-to-find-expo-in-this-project-have-you-run-yarn-npm-install-yet)
+
+**Day 3: Typescript Basics**
+
+- TypeScript Example:
+
+- Normal Function:
+  - Understand how to create a typescript function and what are the mandatory part of the functions.
+
+```TypeScript
+function minimal(
+  a: number, 
+  b: number): number 
+  {
+    return a < b ? a : b;
+  }
+console.log(minimal(1, 2));
+console.log(minimal("2","3")); 
+//will show type error of: Argument of type 'string' is not assignable to parameter of type 'number'
+```
+
+- Arrow functions: 
+  - Used very often in the real world and it can remove the boilerplate function keyword and make the code neater.
+  - Also it can avoid the bind for this in normal class function.
+
+```TypeScript
+const minimal2 = (
+  a: string, 
+  b: string): string => 
+  {
+    return a < b ? a : b;
+  }
+console.log(minimal2("a","b"));
+```
+
+- Generic functions: 
+  - Define type relations between input parameters and output
+  - Example: if we want to make add function for two strings, we can create add2
+**But what if we want the same add function to work for both string and number?** 
+  - We can use generic function
+
+```TypeScript
+const minimal = <T,>(
+  a: T, 
+  b: T) => 
+  {
+    return a < b ? a : b;
+  }
+console.log(minimal("asdf","qwerty"));
+console.log(minimal(1234,2468));
+```
+
+- Function Type:
+  - Define a function Type and assign it to a const and 
+
+```TypeScript
+type GreetFunction = (name: string) => void;
+
+  const greeter: GreetFunction = (
+    name: string
+    ) => 
+    {
+      console.log(`Hello ${name}`);
+    }
+greeter("John");
+```
+
+- Call Signatures:
+  - Add some extra property to the function
+
+```TypeScript
+type DescribeSomeFunction = 
+  (
+    description: string;
+    (someArg: number): boolean
+  );
+
+  const myDescriptionFn: DescribeSomeFunction = 
+  (
+    someArg: number
+  ) => {
+          someArg > 100;
+          myDescriptionFn.description = "The DescribeSomeFunction to check if number is large than 100";
+        }
+   
+function doSomething(
+  fn: DescribeSomeFunction
+  ) {
+ console.log(fn.description + " returned " + fn(6));
+ }
+ doSomething(myDescriptionFn);
+```
+
+- Optional Parameters:
+  - Use ?
+
+```TypeScript
+const print = (sentence?: string) => {
+console.log(sentence ? sentence : "nothing to print");
+}
+print();
+print("I tell you a secret");
+```
+
+- Rest Parameters
+  - Use …
+
+```TypeScript
+const printRest = (first: number, second: number, ...rest: number[]) => {
+   console.log("first:", first);
+   console.log("rest:", rest);
+ };
+ printRest(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+
+const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const [a, b, …rest] = array;
+console.log(a,b,rest); 
+```
+
+- Parameter Destructuring 
+  - If you pass in a object as parameter to a function, you can destructure the property of the object as shown in the right side.
+
+```TypeScript
+const sum = ({ x, y, z }: { x: number; y: number; z: number }): void => {
+ console.log(x + y + z);
+}
+sum({x: 10, y: 20, z:30});
+```
+
+<p align="center">(<a href="#top">back to top</a>)</p>
 
 ## Room to improve?
 
