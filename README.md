@@ -104,6 +104,7 @@ react-native-starter
 - Push the cloned code to your own github account
 Follow the steps at https://stackoverflow.com/questions/18200248/cloning-a-repo-from-someone-elses-github-and-pushing-it-to-a-repo-on-my-github
 You should be able to see the react-native-starter project is in your RNTraining-REMAKE repo.
+<p align="center">(<a href="#top">back to top</a>)</p>
 
 Day 2:
 **What is React Native?**
@@ -207,6 +208,7 @@ https://www.typescriptlang.org/docs/handbook/enums.html
 
 Error:
 [Unable to find expo in this project - have you run yarn / npm install yet?](https://stackoverflow.com/questions/67618967/unable-to-find-expo-in-this-project-have-you-run-yarn-npm-install-yet)
+<p align="center">(<a href="#top">back to top</a>)</p>
 
 **Day 3: Typescript Basics**
 
@@ -431,6 +433,232 @@ interface Colorful {
 
  const colorCircle: ColorfulCircle = { color: "red", radius: 5 };
  console.log("colorCircle", colorCircle);
+```
+
+**Day 4 Typescript Basics: Classes**
+
+- Classes Example:
+
+  - Define a class
+    - And create instance
+
+```TypeScript
+class Point 
+{
+ x: number;
+ y: number;
+ 
+ constructor(x = 0, y = 0) {
+   this.x = x;
+   this.y = y;
+ }
+
+}
+
+const pt = new Point();
+console.log(pt.x, pt.y);
+```
+
+  - Method
+    - And create instance
+
+```TypeScript
+class Point 
+{
+ x = 10;
+ y = 10;
+ 
+ scale(n: number): void {
+   this.x *= n;
+   this.y *= n;
+ }
+
+}
+
+const pt = new Point();
+pt.scale(10);
+console.log(pt.x, pt.y);
+```
+
+  - Class can implement interface
+
+```TypeScript
+interface Pingable {
+ ping(): void;
+}
+ 
+class Sonar implements Pingable {
+ ping() {
+   console.log("ping!");
+ }
+}
+const sonar = new Sonar();
+sonar.ping();
+```
+
+  - Class can extend base class
+
+```TypeScript
+//base class
+class Animal {
+ move() {
+   console.log("Moving along!");
+ }
+}
+ 
+
+//sub-class
+class Dog extends Animal {
+ woof(times: number) {
+   for (let i = 0; i < times; i++) {
+     console.log("woof!");
+   }
+ }
+}
+ 
+
+const d = new Dog();
+// Base class method
+d.move();
+// Derived class method
+d.woof(3);
+```
+
+  - Member Visibility
+    1. public: all members are public
+
+```TypeScript
+class Employee {
+    public empCode: string;
+    empName: string;
+}
+
+let emp = new Employee();
+emp.empCode = 123;
+emp.empName = "Swati";
+
+//empCode and empName are declared as public
+
+console.log(emp.empCode, emp.empName);
+```
+
+    2. private: Self only
+        - visible only to that class and are not accessible outside the containing class
+
+```TypeScript
+class Employee {
+    private empCode: number;
+    empName: string;
+}
+
+let emp = new Employee();
+emp.empCode = 123; // Compiler Error
+emp.empName = "Swati";//OK
+
+// have marked the member empCode as private. Hence, when we create an object emp and try to access the emp.empCode member, it will give an error
+```
+    3. protected: Self and derived classes
+        - visible to that class and derived classes
+
+```TypeScript
+class Employee {
+    public empName: string;
+    protected empCode: number;
+
+    constructor(name: string, code: number){
+        this.empName = name;
+        this.empCode = code;
+    }
+}
+
+class SalesEmployee extends Employee{
+    private department: string;
+    
+    constructor(name: string, code: number, department: string) {
+        super(name, code);
+        this.department = department;
+    }
+}
+
+let emp = new SalesEmployee("John Smith", 123, "Sales");
+empObj.empCode; //Compiler Error
+
+// have a class Employee with two members, public empName and protected property empCode. We create a subclass SalesEmployee that extends from the parent class Employee. If we try to access the protected member from outside the class, as emp.empCode, we get the following compilation error:
+
+// error TS2445: Property 'empCode' is protected and only accessible within class 'Employee' and its subclasses.
+```
+
+  - Static property and methods
+
+```TypeScript
+class MyClass {
+ static x = 0;
+ static printX() {
+   console.log(MyClass.x);
+ }
+}
+console.log(MyClass.x);
+MyClass.printX();
+```
+
+  - Generic Classes
+
+```TypeScript
+//example 1:
+class Box<Type> {
+   contents: Type;
+   constructor(value: Type) {
+     this.contents = value;
+   }
+ }
+
+ const b = new Box("hello!");
+ console.log(b.contents);
+ const c = new Box(123);
+ console.log(c.contents);
+ const d = new Box({ a: "abc", b: "def" });
+ console.log(d.contents);
+```
+
+  - this Types
+    - In classes, a special type called this refers dynamically to the type of the current class. 
+    - Let’s see how this is useful:  
+
+```TypeScript
+class Box {
+ contents: string = "";
+ set(value: string) {
+   this.contents = value;
+   return this;
+ }
+}
+```
+
+```TypeScript
+//example 2:
+class test{
+    // Use arrow functions
+    func1=(arg:string)=>{
+            return arg+" yeah" + this.prop;
+    }
+    func2=(arg:number)=>{
+            return arg+10 + this.prop;
+    }       
+
+    // some property on this
+    prop = 10;      
+}
+```
+
+```TypeScript
+//example 3:
+
+//JavaScript this is captured outside the function call:
+var _this = this;
+this.prop = 10;
+this.func1 = function (arg) {
+    return arg + " yeah" + _this.prop;
+};
 ```
 
 <p align="center">(<a href="#top">back to top</a>)</p>
