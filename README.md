@@ -664,6 +664,11 @@ this.func1 = function (arg) {
 
 <p align="center">(<a href="#top">back to top</a>)</p>
 
+**Day 5 Typescript Basics: Modules**
+
+
+<p align="center">(<a href="#top">back to top</a>)</p>
+
 ## Room to improve?
 
 - Had make good progress on practice to time-boxing my task to 90 minutes per self-assigned task.
