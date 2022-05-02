@@ -818,7 +818,6 @@ module.exports = {
 
 ![Flatlist Element](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/flatlistElement.png"style=width:200 height: 200"))
 
-
 - Apply the content of flatlist component to Info page of the react-native-starter project
 
 ```TypeScript
@@ -926,7 +925,7 @@ const navigator = createStackNavigator(
 export default createAppContainer(navigator);
 ```
 
-![Sample Result](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/flatlistComponent.png "style=width:200 height: 200"))
+![Sample Result](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/flatlistComponent.png"style=width:200 height: 200"))
 
 <p align="center">(<a href="#top">back to top</a>)</p>
 
