@@ -22,13 +22,15 @@
 Today will be working on setup my linux computer with all the necessary softwares for React Native Learning Course
 
 ## What I had learned today?
+
 Day 1:
+
 - Install vscode
-Go to https://code.visualstudio.com/docs?dv=osx
+Go to <https://code.visualstudio.com/docs?dv=osx>
 Follow the steps to download and install vscode
-- Install node & npm 
+- Install node & npm
 Use the following command to install homebrew:
- /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
+ /bin/bash -c "$(curl -fsSL <https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh>)"
 Install node and npm:
  brew install node
 When you run node -v and npm -v in the mac terminal, you should be able to see something like the following:
@@ -42,9 +44,9 @@ You will see the pod version with pod --version  if you successfully installed c
 ➜  ~ pod --version
 1.10.1
 - Create your own Github Account
-https://github.com/ and create your own github account
-You should have a github account like 
-https://github.com/yourusername
+<https://github.com/> and create your own github account
+You should have a github account like
+<https://github.com/yourusername>
 - Create your own Github repository
 Login your github account and create your repository called RNTraining-REMAKE
 You should a repository called RNTraining-REMAKE in your github accounnt
@@ -52,7 +54,7 @@ You should a repository called RNTraining-REMAKE in your github accounnt
 Install git using: brew install git
 Prepare create a folder in your mac called RNTraining
 Go to RNTraining and run
-git clone https://github.com/huanganya/react-native-starter
+git clone <https://github.com/huanganya/react-native-starter>
 After step1, you should get this:
 ➜  ~ git --version
 git version 2.32.0 (Apple Git-132)
@@ -61,26 +63,29 @@ After step 3, you should get this:
 
 ➜ ls
 react-native-starter
+
 - Push the cloned code to your own github account
-Follow the steps at https://stackoverflow.com/questions/18200248/cloning-a-repo-from-someone-elses-github-and-pushing-it-to-a-repo-on-my-github
+Follow the steps at <https://stackoverflow.com/questions/18200248/cloning-a-repo-from-someone-elses-github-and-pushing-it-to-a-repo-on-my-github>
 You should be able to see the react-native-starter project is in your RNTraining-REMAKE repo.
+
 <p align="center">(<a href="#top">back to top</a>)</p>
 
 Day 2:
 **What is React Native?**
- - Javascript framework
- - cross platform(ios & Android)
- - native UI looking instead of webview
- - JSX componets(TSX in our case)
- 
+
+- Javascript framework
+- cross platform(ios & Android)
+- native UI looking instead of webview
+- JSX componets(TSX in our case)
+
 Visit the following page and understand the pros and cons of react native
-https://www.oreilly.com/library/view/learning-react-native/9781491929049/ch01.html
+<https://www.oreilly.com/library/view/learning-react-native/9781491929049/ch01.html>
 You understand what is react native and why react native is a good choice to develop mobile apps.
 
 - How to run the react native project
-  1. go to your react-native-starter project in the terminal 
+  1. go to your react-native-starter project in the terminal
   2. cd  react-native-starter
-  3. install the node modules 
+  3. install the node modules
   4. npm i --legacy-peer-deps
   5. in the prompt input 'y'
   6. run  npm audit fix --force
@@ -88,7 +93,7 @@ You understand what is react native and why react native is a good choice to dev
   8. yarn add expo
   9. expo doctor --fix-dependencies
   10. expo start
-  11. ctrl + click  http://localhost:19002
+  11. ctrl + click  <http://localhost:19002>
   12. download expo app from Android Playstore
   13. scan QR code
   14. press 'a' open Android emulator
@@ -98,19 +103,21 @@ You should be able to see the app running in the simulator and the Metro server 
 - React Native Project File System
   1. Go to the project root and type code .
   2. You can have a look at the folders and files at the left side menu
-  3. /package.json and /package-lock.json : Find the and visit https://dev.to/naveenchandar/package-json-file-explained-b94 try to understand what’s inside the package.json
+  3. /package.json and /package-lock.json : Find the and visit <https://dev.to/naveenchandar/package-json-file-explained-b94> try to understand what’s inside the package.json
   4. /android and /ios: Please note there are folders called android and ios, those folders contains the settings or the generated code for the android and ios
   5. /node_modules: Please note there is a folder called node_modules, which contains all the necessary node modules for the RN apps. It will be created when you run `npm install`
   6. /src: all the source code. Expand the src folder and have a look at the folders and files under src. You don’t need to understand what’s inside right now. It contains the main codes for the RN apps
   7. Index.js: the entry file for the react native
-  8. __tests__: this is the the fold for all the unit tests
+  8. **tests**: this is the the fold for all the unit tests
   9. Other system files and config files such as .gitignore, prettierrc.js,  babel.config.js, jest.config.js…
 
 **Typescript Basics: Part 1**
+
 - TypeScript is a programming language built and maintained by Microsoft. It is a superset of JavaScript that adds strong type checking and is compiled into plain JavaScript code.
-- Refer to: https://www.freecodecamp.org/news/learn-typescript-basics/
+- Refer to: <https://www.freecodecamp.org/news/learn-typescript-basics/>
 
 - What is Typescript?
+
  1. TypeScript Language: Syntax, Keywords, and type annotation
  2. TypeScript Compiler: transforme typescript to javascrip
  3. Language service: responsible for collecting type information from the source code.
@@ -136,11 +143,12 @@ const num: number = "num";
   );
 };
 ```
+
 ts(2322) error
 ![ts(2322 error)](https://github.com/CraftomeCJ/learningJournal/IMG/PNG/ts(2322)_error.png "style=width:200 height: 200")
 
 - Typescript BasicTypes:
-https://www.typescriptlang.org/docs/handbook/2/everyday-types.html
+<https://www.typescriptlang.org/docs/handbook/2/everyday-types.html>
   1. primitives: string , number , and boolean
   2. Arrays: number[], string[]...
   3. Any
@@ -150,18 +158,18 @@ https://www.typescriptlang.org/docs/handbook/2/everyday-types.html
   7. Type Aliases: type Point = { x: number; y: number; };
   8. Interfaces: interface Point { x: number; y: number; };
   9. Literal Types: “GET” | “POST”
-  10. null and undefined 
-  11. Enums: 
-https://www.typescriptlang.org/docs/handbook/enums.html
+  10. null and undefined
+  11. Enums:
+<https://www.typescriptlang.org/docs/handbook/enums.html>
 
-- Follow the content of Everyday types and practice the types and functions in the list. 
+- Follow the content of Everyday types and practice the types and functions in the list.
   1. Try to write some functions and Understand what is Anonymous Functions.
   2. Try to use union type for your function and do the type check inside the function
   3. Try to write interface and Understand what’s the difference between type and interface. We will have a lot of practice in lessons later.
   4. Understand what what is Literal Types and how to solve the type error for literal types
   5. Try to write some codes for enum
 
-- If have extra time, please go through https://www.typescriptlang.org/docs/handbook/2/narrowing.html and practice more one:
+- If have extra time, please go through <https://www.typescriptlang.org/docs/handbook/2/narrowing.html> and practice more one:
   1. typeof type guards
   2. The in operator
   3. The instanceof check
@@ -189,7 +197,7 @@ console.log(minimal("2","3"));
 //will show type error of: Argument of type 'string' is not assignable to parameter of type 'number'
 ```
 
-- Arrow functions: 
+- Arrow functions:
   - Used very often in the real world and it can remove the boilerplate function keyword and make the code neater.
   - Also it can avoid the bind for this in normal class function.
 
@@ -203,10 +211,10 @@ const minimal2 = (
 console.log(minimal2("a","b"));
 ```
 
-- Generic functions: 
+- Generic functions:
   - Define type relations between input parameters and output
   - Example: if we want to make add function for two strings, we can create add2
-**But what if we want the same add function to work for both string and number?** 
+**But what if we want the same add function to work for both string and number?**
   - We can use generic function
 
 ```TypeScript
@@ -221,7 +229,7 @@ console.log(minimal(1234,2468));
 ```
 
 - Function Type:
-  - Define a function Type and assign it to a const and 
+  - Define a function Type and assign it to a const and
 
 ```TypeScript
 type GreetFunction = (name: string) => void;
@@ -288,7 +296,7 @@ const [a, b, …rest] = array;
 console.log(a,b,rest); 
 ```
 
-- Parameter Destructuring 
+- Parameter Destructuring
   - If you pass in a object as parameter to a function, you can destructure the property of the object as shown in the right side.
 
 ```TypeScript
@@ -317,7 +325,7 @@ const greet = (person: ObjectPerson): string => {
 }
 ```
 
-  - Type as Object Type
+- Type as Object Type
 
 ```TypeScript
 type Person = 
@@ -339,8 +347,8 @@ const jerry: Person =
 console.log(greet(jerry));
 ```
 
-  - Property Modifiers : 
-    - Optional: ?
+- Property Modifiers :
+  - Optional: ?
 
 ```TypeScript
 interface Person {
@@ -360,8 +368,8 @@ interface Counter {
 }
 ```
 
-  - Extending Type
-    - Extend
+- Extending Type
+  - Extend
 
 ```TypeScript
 interface BasicAddress {
@@ -378,8 +386,8 @@ interface AddressWithUnit extends BasicAddress {
 }
 ```
 
-  - Intersection Types
-    - &
+- Intersection Types
+  - &
 
 ```TypeScript
 interface Colorful {
@@ -394,6 +402,7 @@ interface Colorful {
  const colorCircle: ColorfulCircle = { color: "red", radius: 5 };
  console.log("colorCircle", colorCircle);
 ```
+
 <p align="center">(<a href="#top">back to top</a>)</p>
 
 **Day 4 Typescript Basics: Classes**
@@ -420,8 +429,8 @@ const pt = new Point();
 console.log(pt.x, pt.y);
 ```
 
-  - Method
-    - And create instance
+- Method
+  - And create instance
 
 ```TypeScript
 class Point 
@@ -441,7 +450,7 @@ pt.scale(10);
 console.log(pt.x, pt.y);
 ```
 
-  - Class can implement interface
+- Class can implement interface
 
 ```TypeScript
 interface Pingable {
@@ -457,7 +466,7 @@ const sonar = new Sonar();
 sonar.ping();
 ```
 
-  - Class can extend base class
+- Class can extend base class
 
 ```TypeScript
 //base class
@@ -485,7 +494,7 @@ d.move();
 d.woof(3);
 ```
 
-  - Member Visibility
+- Member Visibility
     1. public: all members are public
 
 ```TypeScript
@@ -518,6 +527,7 @@ emp.empName = "Swati";//OK
 
 // have marked the member empCode as private. Hence, when we create an object emp and try to access the emp.empCode member, it will give an error
 ```
+
     3. protected: Self and derived classes
         - visible to that class and derived classes
 
@@ -549,7 +559,7 @@ empObj.empCode; //Compiler Error
 // error TS2445: Property 'empCode' is protected and only accessible within class 'Employee' and its subclasses.
 ```
 
-  - Static property and methods
+- Static property and methods
 
 ```TypeScript
 class MyClass {
@@ -562,7 +572,7 @@ console.log(MyClass.x);
 MyClass.printX();
 ```
 
-  - Generic Classes
+- Generic Classes
 
 ```TypeScript
 //example 1:
@@ -581,9 +591,9 @@ class Box<Type> {
  console.log(d.contents);
 ```
 
-  - this Types
-    - In classes, a special type called this refers dynamically to the type of the current class. 
-    - Let’s see how this is useful:  
+- this Types
+  - In classes, a special type called this refers dynamically to the type of the current class.
+  - Let’s see how this is useful:  
 
 ```TypeScript
 class Box {
@@ -627,7 +637,8 @@ this.func1 = function (arg) {
 **Day 5 Typescript Basics: Modules**
 
 -Modules example:
-  - Export default
+
+- Export default
 
 ```TypeScript
 //@filename: hello.ts
@@ -644,8 +655,8 @@ import helloWorld from "./hello";
 helloWorld();
 ```
 
-  - Export Named
-    - And create instance
+- Export Named
+  - And create instance
 
 ```TypeScript
 // @filename: maths.ts
@@ -680,7 +691,7 @@ const abaPhi: number
 
 - React Native is a cross-platform mobile application framework for building native apps.
 - Component Screen with TS example:
-  - Understand what are the elements for a React Component 
+  - Understand what are the elements for a React Component
 ![React Native Component Screen Elements](https://github.com/CraftomeCJ/learningJournal/blob/main/IMG/PNG/elementsforcomponentfile.png "style=width:200 height: 200"))
   - rnfes ==> boilerplate for 4 part React Component File Structure
 
@@ -711,8 +722,8 @@ const styles = StyleSheet.create({
 export default ReactComponentFileScreen;
 ```
 
-  - Understand how a component appear on a screen
-    - add ReactComponentFileScreen.tsx to App.tsx component to make 
+- Understand how a component appear on a screen
+  - add ReactComponentFileScreen.tsx to App.tsx component to make
 the component appear on the user screen.
 
 ```TypeScript
@@ -738,11 +749,11 @@ const navigator = createStackNavigator(
 export default createAppContainer(navigator);
 ```
 
-  - Common Q & A
+- Common Q & A
 ![Name & Purpose](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/namePurpose.png "style=width:200 height: 200"))
 ![Common Q & A](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/JSXQnA.png "style=width:200 height: 200"))
 
-  - Understand the rules of JSX
+- Understand the rules of JSX
 ![Rules of JSX](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/rulesOfJSX.png "style=width:200 height: 200"))
 
 **Apply the content of JS Component to TypeScript TSX**
@@ -781,7 +792,7 @@ npm install -D typescript @types/jest @types/react @types/react-native @types/re
 ```
 
   3. add jest.config.js for jest (future use when we reach testing module)
-   
+
 ```Js
 module.exports = {
   preset: 'react-native',
@@ -826,9 +837,11 @@ module.exports = {
 - Add one more column for technical book's chapter summary for future reference.
 - add one more column for non-technical book's chapter summary for future reference.
 - To learn and master better file management on using .gif to showcase course's challenge work and .png folder for error and warning messages display.
+
 <p align="center">(<a href="#top">back to top</a>)</p>
 
 ### Contact Information
+
 - Email me => [Christophe Javier Ho (CJ Ho)](javier.ho@activate.sg)
 - [My Profile](https://linkedin.com/in/cjho)
 **Learning Progress:**
@@ -840,7 +853,8 @@ module.exports = {
 - [eCommerce Mocksite](https://github.com/CraftomeCJ/finalProjectCobra)
 - [Mini Project Collections](https://codepen.io/my-work)
 
-  ### Acknowledgments
+### Acknowledgments
+
 - Course Resources Provided by:
   - Anya Huang
   - Janna
@@ -855,15 +869,18 @@ Million thanks to:
   - Willy, Janson, Jan, Christmin and Alvin and many others <br />
 for their hard work and support.
 
-  ### Author
+### Author
+
 Created by:
+
 - [CJ Ho](https://linkedin.com/in/cjho)- feel free to contact me :>!!
 
-  ### Software Installed
+### Software Installed
 <!-- - [Xcode 13](https://developer.apple.com/xcode/) -->
 <p align="center">(<a href="#top">back to top</a>)</p>
 
-  ### Resource Links
+### Resource Links
+
 [React Native Training Course Schedule](https://docs.google.com/document/d/1X1WgRPKxWwenKXswD5xHcuEZ4NFRj8EWmkCC8MLsBwg/edit#heading=h.2gbthfjx9c7r)
 [The Complete React Native + Hooks Course](https://nlbsg.udemy.com/course/the-complete-react-native-and-redux-course/learn/lecture/15706740#overview)
 
