@@ -966,7 +966,7 @@ export default createAppContainer(navigator);
     - Use navigation property object added in specifically by React Native library.
     - Navigate is a specific property inside navigation. It is a function that we can use to change the content that is visible on the screen device.
 
-![Button Element](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/buttonElement.png"style=width:200 height: 200"))
+![Button Element](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/buttonElement.png" style=width:200 height: 200"))
 
 ![Sample Result](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample1.png"style=width:200 height: 200"))
 
