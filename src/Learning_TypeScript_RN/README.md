@@ -819,6 +819,20 @@ module.exports = {
 ![Flatlist Element](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/flatlistElement.png"style=width:200 height: 200"))
 
 - Apply the content of flatlist component to Info page of the react-native-starter project
+- It's an easy way to make an efficient scrolling list of data
+- There are two primary props you need to know about in a FlatList and that's data and renderItem
+- **data** - Used to create the list, typically an array of objects
+- **renderItem** - Is a function that will take an individual element of the data array and render a component for it
+
+```javascript
+renderItem = { ( { item } ) => {
+<T,>  return <Text style={styles.textStyle}>{item.name} - Age:{item.age}</Text>
+}}
+```
+
+- FlatList component requires that each item has a unique key such as an id
+- The key from the data array is extracted using the keyExtractor prop on the FlatList component.
+- By default, the keyExtractor prop checks for properties like key and id
 
 ```TypeScript
 // @filename: ReactComponentListScreen.tsx
@@ -870,7 +884,7 @@ const ReactComponentListScreen: React.FC = () => {
   renderItem={({item}) => {  //pass in another Prop with arg
     // arg element will be like ===> {item: {name: 'Friend #1', age: 20}, index: 0}
     //while arg item will be like ===> {name: 'Friend #2', age: 21}
-
+  <T,> 
  return (
     <Text style={styles.textStyle}>
       {item.name} - Age {item.age}
