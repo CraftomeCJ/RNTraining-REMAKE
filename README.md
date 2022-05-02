@@ -434,6 +434,7 @@ interface Colorful {
  const colorCircle: ColorfulCircle = { color: "red", radius: 5 };
  console.log("colorCircle", colorCircle);
 ```
+<p align="center">(<a href="#top">back to top</a>)</p>
 
 **Day 4 Typescript Basics: Classes**
 
@@ -659,6 +660,60 @@ this.prop = 10;
 this.func1 = function (arg) {
     return arg + " yeah" + _this.prop;
 };
+```
+
+<p align="center">(<a href="#top">back to top</a>)</p>
+
+**Day 5 Typescript Basics: Modules**
+
+-Modules example:
+  - Export default
+
+```TypeScript
+//@filename: hello.ts
+const helloWorld = () => {
+  console.log("Hello World!");
+};
+
+export default helloWorld;
+
+
+
+//IN other files
+import helloWorld from "./hello";
+helloWorld();
+```
+
+  - Export Named
+    - And create instance
+
+```TypeScript
+// @filename: maths.ts
+export var pi = 3.14;
+export let squareTwo = 1.41;
+export const phi = 1.61;
+
+export class RandomNumberGenerator {}
+
+
+
+//IN other files
+import {pi, phi, absolutes} from "./maths.js";
+
+console.log(pi);
+const absPhi = absolute(phi);
+
+const absPhi: number
+
+
+
+//IN other files
+import * as mathFn from "./maths.js";
+
+console.log(mathFn.pi);
+const absPhi = mathFn.absolutes(mathFn.phi);
+
+const abaPhi: number
 ```
 
 <p align="center">(<a href="#top">back to top</a>)</p>
