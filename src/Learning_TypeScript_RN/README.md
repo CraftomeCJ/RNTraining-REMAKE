@@ -1371,7 +1371,7 @@ const ReactComponentButtonScreen: React.FC = ({navigation}: {navigation: any}) =
        <Button
        color={'#fff'}
       title="Go to Hook's Counter Demo"
-      onPress={() => navigation.navigate('HookCounter')}
+      onPress={() => navigation.navigate('StateCounter')}
       />
 
     </View>
@@ -1457,6 +1457,212 @@ const navigator = createStackNavigator(
     List: ReactComponentFileScreen,
     Image: ReactComponentImageScreen,
     StateCounter: ReactComponentCounterScreen,
+
+  },
+  {
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+      title: "App",
+    },
+  }
+);
+
+export default createAppContainer(navigator);
+```
+
+![notes on state](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample10.png "style=width:200 height: 200"))
+
+![notes on state2](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample11.png "style=width:200 height: 200"))
+
+![more notes on state](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample12.png "style=width:200 height: 200"))
+
+<p align="center">(<a href="#top">back to top</a>)</p>
+
+**Day 11 React Native: State Management**
+
+- learn what is the react native state and how to use state to update the flatlist(state is data array)
+  - **State**
+  - Use state to store item into array.
+    - The declaration with pre define variable.
+      - Set color as an empty array
+      - const [colors, setColors] = useState([])
+      - set color to and initialize variable
+      - const [colors, setColors] = useState( [ "rgb( 0, 0, 0 )" ] )
+  - Add variable/object to array
+      - setColors( [...colors,randomRGB()] )
+      - ...colors = An array object which contain all the data
+  - Three question:
+  1. What piece of data inside this application is changing?
+color
+  2. What type of data is it? Is it number, a string an object or and array?
+array of string.
+  3. What is the starting value of that piece of data?
+empty array []
+
+![Sample Result2](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample13.png "style=width:200 height: 200"))
+
+![Three Question2](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample14.png "style=width:200 height: 200"))
+
+```TypeScript
+// @filename: ReactComponentButtonScreen.tsx
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native'
+import React from 'react'
+
+const ReactComponentButtonScreen: React.FC = ({navigation}: {navigation: any}) => {
+
+  return (
+    <View>
+      <Text style={styles.styleHeader}>
+        Good day!! This is Home Screen
+      </Text>
+
+      <Button
+      color={'#fff'}
+      title="Go to Component Demo"
+      onPress={() => navigation.navigate('Component')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to List Demo"
+      onPress={() => navigation.navigate('List')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to Image Demo"
+      onPress={() => navigation.navigate('Image')}
+      />
+
+       <Button
+       color={'#fff'}
+      title="Go to Hook's Counter Demo"
+      onPress={() => navigation.navigate('StateCounter')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to Hook's Color Demo"
+      onPress={() => navigation.navigate('StateColor')}
+      />
+
+    </View>
+  );
+};
+
+export default ReactComponentButtonScreen;
+
+const styles = StyleSheet.create({
+  styleHeader: {
+    marginVertical: 20,
+    fontSize: 40,
+    color: 'yellow',
+    backgroundColor: 'lightblue',
+  },
+  styleTouch: {
+    marginVertical: 15,
+    fontSize: 25,
+    color: 'blue',
+    backgroundColor: 'lightyellow',
+  },
+  styleMain: {
+    marginVertical: 10,
+    fontSize: 20,
+    color: 'orange',
+    backgroundColor: 'lightpink'
+  }
+}
+}
+);
+```
+
+```TypeScript
+// @filename: ReactComponentColorScreen.tsx
+import { StyleSheet, Text, View, Button } from 'react-native'
+import React, {useState} from 'react'
+
+const ReactComponentColorScreen: React.FC= () => {
+  const [color, setColor] = useState(["rgb( 0, 0, 0 )"])
+
+  return (
+    <View>
+      <Text style={styles.textHeader}>
+        What is your favorite color?
+        </Text>
+        <Text style={styles.textParagraph}>
+        My favorite color is: {color}
+        </Text>
+      <Button
+        title="Green"
+        onPress={() => {
+          setColor('green')
+        }}
+      />
+      <Button
+        title="Blue"
+        onPress={() => {
+          setColor('blue')
+        }}
+      />
+      <Button
+        title="Pink"
+        onPress={() => {
+          setColor('pink')
+        }}
+      />
+      <Button
+        title="Red"
+        onPress={() => {
+          setColor('red')
+        }}
+      />
+      <Button
+        title="Reset"
+        onPress={() => {
+          setColor('')
+        }}
+      />
+    </View>
+  )
+}
+
+export default ReactComponentColorScreen
+
+const styles = StyleSheet.create({
+  textHeader: {
+    fontSize: 30
+  },
+  textParagraph: {
+    fontSize: 20
+  },
+  buttonStyle: {
+    marginVertical: 20,
+    color: 'red'
+  }
+})
+```
+
+```TypeScript
+// @filename: App.tsx
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+
+import ReactComponentButtonScreen from "./ReactComponentButtonScreen";
+import ReactComponentFileScreen from "./ReactComponentFileScreen";
+import ReactComponentListScreen from "./ReactComponentListScreen";
+import ReactComponentImageScreen from "./ReactComponentImageScreen";
+import ReactComponentCounterScreen from "./ReactComponentCounterScreen";
+import ReactComponentColorScreen from "./ReactComponentColorScreen";
+
+
+const navigator = createStackNavigator(
+  {
+    Home: ReactComponentButtonScreen,
+    Component: ReactComponentFileScreen,
+    List: ReactComponentFileScreen,
+    Image: ReactComponentImageScreen,
+    StateCounter: ReactComponentCounterScreen,
+    StateColor: ReactComponentColorScreen
 
   },
   {
