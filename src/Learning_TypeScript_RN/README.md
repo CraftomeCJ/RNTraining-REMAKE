@@ -733,12 +733,12 @@ the component appear on the user screen.
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 
-import HomeScreen from "./HomeScreen";
+import ReactComponentButtonScreen from "./ReactComponentButtonScreen";
 import ReactComponentFileScreen from "./ReactComponentFileScreen";
 
 const navigator = createStackNavigator(
   {
-    Home: HomeScreen,
+    Home: ReactComponentButtonScreen,
     Component: ReactComponentFileScreen
   },
   {
@@ -811,7 +811,7 @@ module.exports = {
 
 <p align="center">(<a href="#top">back to top</a>)</p>
 
-**Day 7 React Native:  Flatlist component**
+**Day 7 React Native:  Flatlist Element**
 
 - Understand what is flatlist and how it form the list from the datasource
 [more reading](https://reactnative.dev/docs/flatlist)
@@ -923,7 +923,7 @@ import ReactComponentListScreen from "./ReactComponentListScreen";
 
 const navigator = createStackNavigator(
   {
-    Home: HomeScreen,
+    Home: ReactComponentButtonScreen,
     Component: ReactComponentFileScreen,
     List: ReactComponentFileScreen,
 
@@ -940,6 +940,190 @@ export default createAppContainer(navigator);
 ```
 
 ![Sample Result](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/flatlistComponent.png"style=width:200 height: 200"))
+
+<p align="center">(<a href="#top">back to top</a>)</p>
+
+**Day 8 React Native:  Button Element**
+
+- Navigation example: 
+
+  - Understand how to navigate around the screens. 
+  - **Button & TouchableOpacity**
+    - **Button**
+    - Very simple component for showing a button and detecting a press
+    - onPress - Handler to be call when user taps the button
+    - title - Text to display inside the button
+    - color - Color of the text (iOS), or background color of the button (Android).
+
+    - **TouchableOpacity**
+    - Highly customizable component that can detect a press on just about any kind of element
+    - onPress - Handler to be call when user taps the button
+    - style - can apply the custom styling.
+    - **Stack Navigator**
+    - Stack Navigator provides a way for your app to transition between screens where each new screen is placed on top of a stack.
+    - Stack navigator shows one of our components and passes in that props object
+    - There are a lot of properties exist inside the props object.
+    - Use navigation property object added in specifically by React Native library.
+    - Navigate is a specific property inside navigation. It is a function that we can use to change the content that is visible on the screen device.
+
+![Button Element](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/buttonElement.png"style=width:200 height: 200"))
+
+![Sample Result](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample1.png"style=width:200 height: 200"))
+
+```TypeScript
+// @filename: ReactComponentButtonScreen.tsx
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native'
+import React from 'react'
+//using 'View' to wrap the <Text> component
+//using 'TouchableOpacity' to warp the <Button> component and it is going to be used more frequently than 'Button'
+
+//1. first need to show 'Button' on the screen
+//note <Button /> element is a self close component and
+//pass in a prop 'title' and assign a value to the prop ="Click Me" <== a rare case of without using curly braces  ////<== this is the default value for the button
+//add in another prop ==> 'onPress={}' in to <Button> element
+//2. then need to use 'TouchableOpacity' to wrap the <Button> element with a default css fade-off animation
+//note TouchableOpacity is not a self close tag and it is a wrapper tag
+//those in light blue are props
+//temporary resolve error with
+// const HomeScreen = ({navigation}: {navigation: any}) => {
+//   return ...
+//  }
+/*doing this will make you lose type safety not advisable*/
+
+const ReactComponentButtonScreen: React.FC = ({navigation}: {navigation: any}) => {
+
+  return (
+    <View>
+      <Text style={styles.styleHeader}>
+        Good day!! This is Home Screen
+      </Text>
+
+      <Button
+      color={'#fff'}
+      title="Go to Component Demo"
+      onPress={() => navigation.navigate('Component')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to List Demo"
+      onPress={() => navigation.navigate('List')}
+      />
+
+            <TouchableOpacity
+      onPress={() => navigation.navigate('Counter')}>
+        <Text style={styles.styleMain}>
+          Go to Counter Demo
+        </Text>
+      </TouchableOpacity>
+
+    </View>
+  );
+};
+
+export default ReactComponentButtonScreen;
+//note we can refactor <TouchableOpacity> element into <Button> for neater code
+//notice we no reference to the  'prop' argument inside our function, the 'prop' argument is to refer to navigation property so we can refactor by remove 'prop' argument and put in a set of (), a set of {}, and point to 'navigation'
+//note this is refer to Destructuring <==
+//will be using it quite frequently
+
+const styles = StyleSheet.create({
+  styleHeader: {
+    marginVertical: 20,
+    fontSize: 40,
+    color: 'yellow',
+    backgroundColor: 'lightblue',
+  },
+  styleTouch: {
+    marginVertical: 15,
+    fontSize: 25,
+    color: 'blue',
+    backgroundColor: 'lightyellow',
+  },
+  styleMain: {
+    marginVertical: 10,
+    fontSize: 20,
+    color: 'orange',
+    backgroundColor: 'lightpink'
+  }
+}
+}
+);
+```
+
+```TypeScript
+// @filename: ReactComponentListScreen.tsx
+import React from 'react';
+import {Text, StyleSheet, FlatList} from 'react-native';
+
+const ReactComponentListScreen: React.FC = () => {
+  
+  const friends = [
+
+    {name: 'Friend #1', age: 20,},
+    {name: 'Friend #2', age: 21,},
+    {name: 'Friend #3', age: 22,},
+    {name: 'Friend #4', age: 23,},
+    {name: 'Friend #5', age: 24,},
+    {name: 'Friend #6', age: 25,},
+    {name: 'Friend #7', age: 26,},
+    {name: 'Friend #8', age: 27,},
+    {name: 'Friend #9', age: 28,},
+    {name: 'Friend #10', age: 29,},
+  ];
+
+  return (
+  <FlatList
+  showsHorizontalScrollIndicator={false}
+  keyExtractor={friend => friend.name}
+  data={friends}
+  renderItem={({item}) => {
+    <T,> return (
+    <Text style={styles.textStyle}>
+      {item.name} - Age {item.age}
+    </Text>
+    );
+  }}
+  />
+    );
+};
+
+const styles = StyleSheet.create({
+  textStyle: {
+    marginVertical: 50
+  }
+});
+
+export default ReactComponentFileScreen;
+```
+
+```TypeScript
+// @filename: App.tsx
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+
+import ReactComponentButtonScreen from "./ReactComponentButtonScreen";
+import ReactComponentFileScreen from "./ReactComponentFileScreen";
+import ReactComponentListScreen from "./ReactComponentListScreen";
+
+
+const navigator = createStackNavigator(
+  {
+    Home: ReactComponentButtonScreen,
+    Component: ReactComponentFileScreen,
+    List: ReactComponentFileScreen,
+
+  },
+  {
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+      title: "App",
+    },
+  }
+);
+
+export default createAppContainer(navigator);
+```
 
 <p align="center">(<a href="#top">back to top</a>)</p>
 
