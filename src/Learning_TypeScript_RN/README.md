@@ -1152,6 +1152,8 @@ export default createAppContainer(navigator);
 
 ![Sample Result](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample2.png "style=width:200 height: 200"))
 
+![Sample Result](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample4.png "style=width:200 height: 200"))
+
 ```TypeScript
 // @filename: ReactComponentButtonScreen.tsx
 import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native'
@@ -1293,6 +1295,168 @@ const navigator = createStackNavigator(
     Component: ReactComponentFileScreen,
     List: ReactComponentFileScreen,
     Image: ReactComponentImageScreen,
+
+  },
+  {
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+      title: "App",
+    },
+  }
+);
+
+export default createAppContainer(navigator);
+```
+
+<p align="center">(<a href="#top">back to top</a>)</p>
+
+**Day 10 React Native: State Management**
+
+  - learn what is the react native state and how to use state to update the component
+    - **State**
+    - There are two types of data state and props in React Native which control the component.
+    - The component that uses the state is mutable. They can be changed later on if required.
+    - The props component is immutable, and it is fixed throughout the lifetime.
+    - The state is generally initialized in constructor and then call setState when we want to change it.
+    - We never directly modify a state variable. React doesn't detect this change. Only use the "setter" function
+    - We can track any kind of data that changes over time - a number , string, array of object, etc.
+    - When a component is rerendered, all of its children get rerendered too.
+    - A state variable can be passed to a child component. At that point, the state variable is now being used as props.
+**Why never change the state directly**
+  - You may just replace the update you made.
+  - When you directly update the state, it does not change this.state immediately. Instead, it creates a pending state transition, and accessing it after calling this method will only return the present value.
+   - You will lose control of the state across all components.
+
+![State Management](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample5.png "style=width:200 height: 200"))
+
+![Sample Result](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample6.png "style=width:200 height: 200"))
+
+![Three Question](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample7.png "style=width:200 height: 200"))
+
+![Three Question](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample8.png "style=width:200 height: 200"))
+
+![Three Question](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample9.png "style=width:200 height: 200"))
+
+```TypeScript
+// @filename: ReactComponentButtonScreen.tsx
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native'
+import React from 'react'
+
+const ReactComponentButtonScreen: React.FC = ({navigation}: {navigation: any}) => {
+
+  return (
+    <View>
+      <Text style={styles.styleHeader}>
+        Good day!! This is Home Screen
+      </Text>
+
+      <Button
+      color={'#fff'}
+      title="Go to Component Demo"
+      onPress={() => navigation.navigate('Component')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to List Demo"
+      onPress={() => navigation.navigate('List')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to Image Demo"
+      onPress={() => navigation.navigate('Image')}
+      />
+
+       <Button
+       color={'#fff'}
+      title="Go to Hook's Counter Demo"
+      onPress={() => navigation.navigate('HookCounter')}
+      />
+
+    </View>
+  );
+};
+
+export default ReactComponentButtonScreen;
+
+const styles = StyleSheet.create({
+  styleHeader: {
+    marginVertical: 20,
+    fontSize: 40,
+    color: 'yellow',
+    backgroundColor: 'lightblue',
+  },
+  styleTouch: {
+    marginVertical: 15,
+    fontSize: 25,
+    color: 'blue',
+    backgroundColor: 'lightyellow',
+  },
+  styleMain: {
+    marginVertical: 10,
+    fontSize: 20,
+    color: 'orange',
+    backgroundColor: 'lightpink'
+  }
+}
+}
+);
+```
+
+```TypeScript
+// @filename: ReactComponentCounterScreen
+import { StyleSheet, Text, View, Button } from 'react-native'
+import React, {useState} from 'react'
+
+const Counter: React.FC = () => {
+   //todo trying: try to replace the following line with let counter = 0;
+  const [counter, setCounter] = useState(0)
+
+  return (
+    <View>
+      <Button
+      title="Increase"
+      onPress={() => {
+  //todo trying: try to replace the following line with counter++;
+        setCounter(counter + 1)
+      }}
+      />
+      <Button
+      title="Decrease"
+      onPress={() => {
+  //todo trying: try to replace the following line with counter--;
+        setCounter(counter - 1)
+      }}
+      />
+    </View>
+  )
+}
+
+export default Counter
+
+const styles = StyleSheet.create({})
+```
+
+```TypeScript
+// @filename: App.tsx
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+
+import ReactComponentButtonScreen from "./ReactComponentButtonScreen";
+import ReactComponentFileScreen from "./ReactComponentFileScreen";
+import ReactComponentListScreen from "./ReactComponentListScreen";
+import ReactComponentImageScreen from "./ReactComponentImageScreen";
+import ReactComponentCounterScreen from "./ReactComponentCounterScreen";
+
+
+const navigator = createStackNavigator(
+  {
+    Home: ReactComponentButtonScreen,
+    Component: ReactComponentFileScreen,
+    List: ReactComponentFileScreen,
+    Image: ReactComponentImageScreen,
+    StateCounter: ReactComponentCounterScreen,
 
   },
   {
