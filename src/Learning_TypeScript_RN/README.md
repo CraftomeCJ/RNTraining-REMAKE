@@ -1127,6 +1127,187 @@ export default createAppContainer(navigator);
 
 <p align="center">(<a href="#top">back to top</a>)</p>
 
+**Day 9 React Native: Custom Component**
+
+  - learn the how to create reusable custom components
+    - **Image**
+    - A React component for displaying different types of images, including network images, static resources, temporary local images, and images from local disk, such as the camera roll
+    - Source - The image source (either a remote URL or a local file resource)
+    - The static images are added in app by placing it in somewhere in the source code directory and provide its path as:
+
+```TypeScript
+ <Image source={require('./icon_name.png')} />
+```
+
+    - The dynamic and network images are also be displayed in the Image component. To access the network image, it is required to specify the dimensions of image manually.
+
+```TypeScript
+ <Image source={{uri: 'https://url_of_image.png'}} style={{width: 60, height: 60}} />
+```
+
+  - **Reusable Component**
+    - With the growing number of properties and features in the application, even simple reusable components like Button can become complicated as a result of mutations and possible combinations.
+
+![Button Element](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample3.png "style=width:200 height: 200"))
+
+![Sample Result](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample2.png "style=width:200 height: 200"))
+
+```TypeScript
+// @filename: ReactComponentButtonScreen.tsx
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native'
+import React from 'react'
+
+const ReactComponentButtonScreen: React.FC = ({navigation}: {navigation: any}) => {
+
+  return (
+    <View>
+      <Text style={styles.styleHeader}>
+        Good day!! This is Home Screen
+      </Text>
+
+      <Button
+      color={'#fff'}
+      title="Go to Component Demo"
+      onPress={() => navigation.navigate('Component')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to List Demo"
+      onPress={() => navigation.navigate('List')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to Image Demo"
+      onPress={() => navigation.navigate('Image')}
+      />
+
+    </View>
+  );
+};
+
+export default ReactComponentButtonScreen;
+
+const styles = StyleSheet.create({
+  styleHeader: {
+    marginVertical: 20,
+    fontSize: 40,
+    color: 'yellow',
+    backgroundColor: 'lightblue',
+  },
+  styleTouch: {
+    marginVertical: 15,
+    fontSize: 25,
+    color: 'blue',
+    backgroundColor: 'lightyellow',
+  },
+  styleMain: {
+    marginVertical: 10,
+    fontSize: 20,
+    color: 'orange',
+    backgroundColor: 'lightpink'
+  }
+}
+}
+);
+```
+
+```TypeScript
+// @filename: ReactComponentImageScreen
+import React from 'react';
+import { StyleSheet, Text, View, Image } from 'react-native';
+//todo import the child imageDetails to parent here
+import ImageDetails from './../components/ImageDetails'
+
+//todo customize each  of the different image detail to show slightly different content
+//todo next is to pass some props from parent down to the child to customize how this child component display itself to show to the user
+//todo code to add image and add image file to assets folder
+
+//note
+/* create a very unique custom props name called title */
+/* 'ImageDetails => self close tag for display image details */
+////<== props title for description
+////<== 2nd props always use name make send to me & other developer
+const ReactComponentImageScreen: React.FC = ({navigation}) => {
+
+return (
+    <View>
+      <TouchableOpacity onPress={() => navigation.navigate('Counter')}>
+
+      <ImageDetails
+      imageTitle = 'sunset'
+      imageSource = {require('../../assets/sunset.jpg')}
+      score = {10}
+      />
+      </TouchableOpacity>
+      <ImageDetails
+      imageTitle = 'freeway'
+      imageSource = {require('../../assets/freeway.jpg')}
+      score = {8}
+      />
+      <ImageDetails
+      imageTitle = 'cliffbythesea'
+      imageSource = {require('../../assets/cliffbythesea.jpg')}
+      score = {7}
+      />
+      <ImageDetails
+      imageTitle = 'mountaintop'
+      imageSource = {require('../../assets/mountaintop.jpg')}
+      score = {10}
+      />
+
+    </View>
+  )
+}
+
+export default ReactComponentImageScreen;
+
+const styles = StyleSheet.create({})
+//learn Parent-Child relationship
+//todo same group of elements, repeated three times
+//todo we could repeat the same JSX three times over, or we could create a separate component
+
+//learn building reusable components exercise
+/*
+1. add a new prop to be passed from ImageScreen to ImageDetails
+2. this props should indicate a 'score' for the image. Make sure you give the prop an appropriate name!
+3. show the image score under the image in a new Text element
+*/
+```
+
+```TypeScript
+// @filename: App.tsx
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+
+import ReactComponentButtonScreen from "./ReactComponentButtonScreen";
+import ReactComponentFileScreen from "./ReactComponentFileScreen";
+import ReactComponentListScreen from "./ReactComponentListScreen";
+import ReactComponentImageScreen from "./ReactComponentImageScreen";
+
+
+const navigator = createStackNavigator(
+  {
+    Home: ReactComponentButtonScreen,
+    Component: ReactComponentFileScreen,
+    List: ReactComponentFileScreen,
+    Image: ReactComponentImageScreen,
+
+  },
+  {
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+      title: "App",
+    },
+  }
+);
+
+export default createAppContainer(navigator);
+```
+
+<p align="center">(<a href="#top">back to top</a>)</p>
+
 ### Possible Project Work
 
 **I wished to:** <br/>
