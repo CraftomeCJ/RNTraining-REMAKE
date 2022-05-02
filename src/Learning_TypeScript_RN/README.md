@@ -816,7 +816,7 @@ module.exports = {
 - Understand what is flatlist and how it form the list from the datasource
 [more reading](https://reactnative.dev/docs/flatlist)
 
-![Flatlist Element](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/flatlistElement.png"style=width:200 height: 200"))
+![Flatlist Element](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/flatlistElement.png" style=width:200 height: 200"))
 
 - Apply the content of flatlist component to Info page of the react-native-starter project
 - It's an easy way to make an efficient scrolling list of data
@@ -939,7 +939,7 @@ const navigator = createStackNavigator(
 export default createAppContainer(navigator);
 ```
 
-![Sample Result](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/flatlistComponent.png"style=width:200 height: 200"))
+![Sample Result](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/flatlistComponent.png" style=width:200 height: 200"))
 
 <p align="center">(<a href="#top">back to top</a>)</p>
 
@@ -966,9 +966,9 @@ export default createAppContainer(navigator);
     - Use navigation property object added in specifically by React Native library.
     - Navigate is a specific property inside navigation. It is a function that we can use to change the content that is visible on the screen device.
 
-![Button Element](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/buttonElement.png"style=width:200 height: 200"))
+![Button Element](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/buttonElement.png" style=width:200 height: 200"))
 
-![Sample Result](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample1.png"style=width:200 height: 200"))
+![Sample Result](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample1.png" style=width:200 height: 200"))
 
 ```TypeScript
 // @filename: ReactComponentButtonScreen.tsx
