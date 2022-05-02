@@ -739,11 +739,11 @@ export default createAppContainer(navigator);
 ```
 
   - Common Q & A
-![Name & Purpose](https://github.com/CraftomeCJ/learningJournal/blob/main/IMG/PNG/namePurpose.png "style=width:200 height: 200"))
-![Common Q & A](https://github.com/CraftomeCJ/learningJournal/blob/main/IMG/PNG/JSXQnA.png "style=width:200 height: 200"))
+![Name & Purpose](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/namePurpose.png "style=width:200 height: 200"))
+![Common Q & A](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/JSXQnA.png "style=width:200 height: 200"))
 
   - Understand the rules of JSX
-![Rules of JSX](https://github.com/CraftomeCJ/learningJournal/blob/main/IMG/PNG/rulesOfJSX.png "style=width:200 height: 200"))
+![Rules of JSX](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/rulesOfJSX.png "style=width:200 height: 200"))
 
 **Apply the content of JS Component to TypeScript TSX**
 
