@@ -1,27 +1,6 @@
 ==============================================================================
 <div id='top'><div>
-<h1 align="center">Today's Journal</h1>
-
-<details>
-  <summary>Table of Contents</summary>
-  <ul>
-    <li><a href="#what-i-had-learned-today">What I had learned today?</a></li>
-    <li><a href="#exercise-of-the-day">Challenge Questions</a></li>
-    <li><a href="#what-difficulties-did-i-encounter-and-how-do-i-solve-the-issues">What difficulties did I encounter and How do I solve the issues?</a></li>
-    <li><a href="#What-other-issues-trying-to-resolve?">Other difficulties</a></li>
-    <li><a href="#contact-information">Contact Information</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-    <li><a href="#software-installed">Software Installed</a></li>
-    <li><a href="#resource-links">Resource Links</a></li>
-  </ul>
-</details>
-
-## Personal Notes
-
-**Today's main focus:** <br />
-Today will be working on setup my linux computer with all the necessary softwares for React Native Learning Course
-
-## What I had learned today?
+<h1 align="center">React Native + TypeScript Basics</h1>
 
 Day 1:
 
@@ -2354,7 +2333,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightpink'
   }
 }
-}
 );
 ```
 
@@ -2640,6 +2618,444 @@ const styles = StyleSheet.create({
 });
 
 export default Counter;
+```
+
+<p align="center">(<a href="#top">back to top</a>)</p>
+
+**Day 16 React Native: State Management**
+
+- learn the how to pull state from components with exposed states
+  - **Handling Text Input**
+- update state when input something in to textInput.
+  1. AutoCapitalize - Tells TextInput to automatically capitalize certain characters
+  2. AutoCorrect = {false} - is to disables auto-correct
+  3. secureTextEntry - the text input obscures the text entered so that sensitive text like passwords stay secure.
+  4. placeholder - The string that will be rendered before text input has been entered.
+  5. value = {state} - will display the state date each time we update the state.
+  6. onChangeText - Callback that is called when the text input's text changes
+  7. onSubmitEditing - Callback that is called when "Enter" pressed.
+  8. Text screen element hold the state current input and going to show the input element by passing props in the props to value every single time render the text screen.
+  9. Input is a callback function under the prop name on change text. Callback function will be invoked anytime a user types inside of the input.
+
+![Sample Image](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample24.png "style=width:200 height: 200")))
+
+![Sample Image](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample25.png "style=width:200 height: 200")))
+
+![Sample Image](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample26.png "style=width:200 height: 200")))
+
+```TypeScript
+// @filename: ReactComponentButtonScreen.tsx
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native'
+import React from 'react'
+
+const ReactComponentButtonScreen: React.FC = ({navigation}: {navigation: any}) => {
+
+  return (
+    <View>
+      <Text style={styles.styleHeader}>
+        Good day!! This is Home Screen
+      </Text>
+
+      <Button
+      color={'#fff'}
+      title="Go to Component Demo"
+      onPress={() => navigation.navigate('Component')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to List Demo"
+      onPress={() => navigation.navigate('List')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to Image Demo"
+      onPress={() => navigation.navigate('Image')}
+      />
+
+       <Button
+       color={'#fff'}
+      title="Go to Hook's Counter Demo"
+      onPress={() => navigation.navigate('StateCounter')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to Hook's Color Demo"
+      onPress={() => navigation.navigate('StateColor')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to refactor Square Demo"
+      onPress={() => navigation.navigate('StateColor')}
+      />
+    </View>
+
+          <Button
+      color={'#fff'}
+      title="Go to Reducers Square Demo"
+      onPress={() => navigation.navigate('StateColor')}
+      />
+    </View>
+
+              <Button
+      color={'#fff'}
+      title="Go to Text Screen Demo"
+      onPress={() => navigation.navigate('Text')}
+      />
+    </View>
+
+
+              <Button
+      color={'#fff'}
+      title="Go to Text Input Screen Demo"
+      onPress={() => navigation.navigate('Text')}
+      />
+    </View>
+
+    
+  );
+};
+
+export default ReactComponentButtonScreen;
+
+const styles = StyleSheet.create({
+  styleHeader: {
+    marginVertical: 20,
+    fontSize: 40,
+    color: 'yellow',
+    backgroundColor: 'lightblue',
+  },
+  styleTouch: {
+    marginVertical: 15,
+    fontSize: 25,
+    color: 'blue',
+    backgroundColor: 'lightyellow',
+  },
+  styleMain: {
+    marginVertical: 10,
+    fontSize: 20,
+    color: 'orange',
+    backgroundColor: 'lightpink'
+  }
+}
+);
+```
+
+```TypeScript
+// @filename: TextScreen.tsx
+import React, {useState} from 'react';
+import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity } from 'react-native';
+
+const TextScreen: React.FC = () => {
+  const [ name, setName] = useState('');
+  const [password, setPassword] = useState('');
+
+  return (
+    <View>
+      <Text style={styles.styleHeader}>
+        Good day!! This is Text Screen
+      </Text>
+
+      <Text style={styles.styleMain}>
+        Name: {name}
+      </Text>
+      <TextInput
+      style={styles.styleMain}
+      placeholder="Enter your name"
+      autoCapitalize="none"
+      autpCorrect={false}
+      value={name}
+      onChangeText={(newName) => setName(newName)} 
+      />
+
+      <Text style={styles.styleMain}>
+        Password: {password}
+      </Text>
+
+      <TextInput
+        style={styles.styleMain}
+        placeholder="Enter your password"
+        autoCapitalize="none"
+        autpCorrect={false}
+        secureTextEntry={true}
+        value={password}
+        onChangeText={(newPassword) => setPassword(newPassword)}
+      />
+
+      { (password.length < 5 ) ? <Text>Password must be at least 5 characters</Text> : null }
+
+      <Button
+        title="Go to Home Screen"
+        onPress={() => {}}
+      />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  styleHeader: {
+    marginVertical: 20,
+    fontSize: 40,
+    color: 'yellow',
+    backgroundColor: 'lightblue',
+  },
+  styleMain: {
+    marginVertical: 10,
+    fontSize: 20,
+    color: 'orange',
+    backgroundColor: 'lightpink'
+  }
+});
+
+export default TextScreen;
+```
+
+```TypeScript
+// @filename: TextInputScreen.tsx
+// Change to typescript + code refactor
+// Add a reset button.
+// show masked password instead of plain text ******
+
+// learn from Willy:
+// Challenge for myself
+// Set a default password and username
+// Add log in button to do the verify the username and password.
+// prompt alert for valid and invalid login
+// create a toggle visibility button for the password.
+import React, {useReducer} from 'react';
+import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity } from 'react-native';
+
+const defaultUser: User = { 
+  username: 'User',
+  password: 'P@ssw0rd',
+  isValid: false,
+  isVisible: false
+}
+
+enum ActionType {
+  SET_LOGIN = 'login',
+  SET_RESET = 'reset',
+  SET_USERNAME = 'username',
+  SET_PASSWORD = 'password',
+  SET_VALID = 'valid',
+  SET_VISIBLE = 'visible'
+}
+
+type Action = {
+  type: ActionType,
+  payload: string,
+  visible: boolean,
+  valid: boolean
+}
+
+type User = {
+  username: string,
+  password: string,
+  isValid: boolean,
+  isVisible: boolean
+}
+
+const initialUser: User = {
+  username: '',
+  password: '',
+  isValid: false,
+  isVisible: false
+}
+
+const userChecking = (user:User): boolean => {
+  return (user.username === defaultUser.username && user.password === defaultUser.password) ? true : false;
+}
+
+const reducer ( state: User, action: Action): User => {
+  switch (action.type) {
+    case ActionType.SET_LOGIN:
+      return {
+        ...state,
+        isValid: userChecking(state)
+      }
+    case ActionType.SET_RESET:
+      return {
+        ...state,
+        username: '',
+        password: '',
+        isValid: false,
+        isVisible: false
+      }
+    case ActionType.SET_USERNAME:
+      return {
+        ...state,
+        username: action.payload
+      }
+    case ActionType.SET_PASSWORD:
+      return {
+        ...state,
+        password: action.payload
+      }
+    case ActionType.SET_VALID:
+      return {
+        ...state,
+        isValid: action.valid
+      }
+    case ActionType.SET_VISIBLE:
+      return {
+        ...state,
+        isVisible: action.visible
+      }
+    default:
+      return state;
+  }
+  case ActionType.SET_RESET:
+    return initialUser;
+    case ActionType.SET_VISIBLE:
+      return {
+        ...state,
+        [action.type as keyof User]: action.visible
+      }
+
+
+const TextInputScreen = () => {
+  const [user, setUser] = useReducer(reducer, initialUser);
+
+  return (
+    <View style={styles.container}
+    />
+    <Text style={styles.text}>LOG IN</Text>
+    <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        placeholder="Enter your username"
+        autoCapitalize="none"
+        autpCorrect={false}
+        value={user.username}
+        onChangeText={(newUsername) => setUser({type: ActionType.SET_USERNAME, payload: newUsername})}
+      />
+      </View>
+      <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        placeholder="Enter your password"
+        autoCapitalize="none"
+        autpCorrect={false}
+        secureTextEntry={!user.isVisible}
+        value={user.password}
+        onChangeText={(newPassword) => setUser({type: ActionType.SET_PASSWORD, payload: newPassword})}
+        OnsubmitEditing={() => setUser({type: ActionType.SET_LOGIN, valid: user.isValid})}
+      />
+      <TouchableOpacity
+      style = {styles.visibility} 
+      onPress={() => setUser({type: ActionType.SET_VISIBLE, visible: !user.isVisible})}
+      />
+      <MaterialIcons name={ (user.visible) ? 'visibility' : 'visibility-off'} size={24} color='black' />
+       />
+      </View>
+
+    <Text style={styles.styleMain}> {
+      user.password.length < 8 ? "Minimal 8 characters": " "}</Text>
+      <View style={styles.btnContainer}>
+      <TouchableOpacity
+      style = {styles.btnStyle}
+      onPress ={() =dispatch( {type: ActionType.SET_LOGIN})}
+      >
+      <Text>Login</Text>
+      </TouchableOpacity
+      style = {styles.btnStyle}
+      onPress ={() =dispatch( {type: ActionType.SET_RESET})}
+      >
+      <Text>Reset</Text>
+      </TouchableOpacity>
+      </View>
+    }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  text: {
+    fontSize: 40,
+    color: 'yellow',
+    backgroundColor: 'lightblue',
+  },
+  input: {
+    marginVertical: 10,
+    fontSize: 20,
+    color: 'orange',
+    backgroundColor: 'lightpink'
+  },
+  btnContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginVertical: 10,
+    width: '100%',
+    paddingHorizontal: 10
+  },
+  btnStyle: {
+    backgroundColor: 'lightblue',
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    borderRadius: 5
+  },
+  visibility: {
+    position: 'absolute',
+    right: 0,
+    top: 0
+  }
+});
+
+export default TextScreen;
+```
+
+```React Native
+```
+
+```TypeScript
+// @filename: App.tsx
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+
+import ReactComponentButtonScreen from "./ReactComponentButtonScreen";
+import ReactComponentFileScreen from "./ReactComponentFileScreen";
+import ReactComponentListScreen from "./ReactComponentListScreen";
+import ReactComponentImageScreen from "./ReactComponentImageScreen";
+import ReactComponentCounterScreen from "./ReactComponentCounterScreen";
+import ReactComponentColorScreen from "./ReactComponentColorScreen";
+import ReactComponentSquareScreenScreen from "./ReactComponentSquareScreenScreen";
+import RefactorSquareScreen from "./RefactorSquareScreen";
+import ReducersSquareScreen from "./ReducersSquareScreen";
+import TextScreen from "./TextScreen";
+import TextInputScreen from "./TextInputScreen";
+
+
+const navigator = createStackNavigator(
+  {
+    Home: ReactComponentButtonScreen,
+    Component: ReactComponentFileScreen,
+    List: ReactComponentFileScreen,
+    Image: ReactComponentImageScreen,
+    StateCounter: ReactComponentCounterScreen,
+    StateColor: ReactComponentColorScreen,
+    SquareScreen: ReactComponentSquareScreenScreen,
+    RefactorSquareScreen: RefactorSquareScreen,
+    ReducersSquareScreen: ReducersSquareScreen,
+    Text: TextScreen,
+    TextInput: TextInputScreen
+
+  },
+  {
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+      title: "App",
+    },
+  }
+);
+
+export default createAppContainer(navigator);
 ```
 
 <p align="center">(<a href="#top">back to top</a>)</p>
