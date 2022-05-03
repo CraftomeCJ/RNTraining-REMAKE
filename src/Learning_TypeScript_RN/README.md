@@ -1695,7 +1695,7 @@ export default createAppContainer(navigator);
 
 ![Three Question2](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample16.png "style=width:200 height: 200"))
 
-![Three Question2](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample17.png "style=width:200 height: 200"))
+![Three Question3](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample17.png "style=width:200 height: 200"))
 
 ```TypeScript
 // @filename: ReactComponentButtonScreen.tsx
