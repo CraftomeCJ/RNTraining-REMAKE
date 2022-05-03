@@ -1678,6 +1678,266 @@ export default createAppContainer(navigator);
 
 <p align="center">(<a href="#top">back to top</a>)</p>
 
+**Day 12 React Native: State Management**
+
+- learn how to update state of the parent component from the child component
+  - **State**
+    - Callback functions in React
+      - Information in React gets passed around to components in two different ways.
+      - First, information can get passed from parent to child as props. That seems pretty straightforward
+      - Establish the property when creating an instance of the child component and it will be available to that instance
+      - Instead of passing down a piece of the state to a child component, the parent can pass down a callback function.
+      - This callback function is run at a later time, usually through some interaction with the child component.
+      - The purpose of this callback function is to change a piece of the state that is a part of the parent component.
+      - This closes the data loop
+
+![Sample Result](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample15.png "style=width:200 height: 200"))
+
+![Three Question2](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample16.png "style=width:200 height: 200"))
+
+![Three Question2](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample17.png "style=width:200 height: 200"))
+
+```TypeScript
+// @filename: ReactComponentButtonScreen.tsx
+//create SquareScreen to contain create square color logic
+
+/*
+Three questions:
+What piece of data inside this application is changing?
+==> red green blue
+What type of data is it? Is it a number, a string, an object, or an array?
+==> number
+What is the starting value of that piece of data?
+==> 255
+Try to change the initial values of red, green and blue to see the effect.
+*/
+
+import { StyleSheet, Text, View } from 'react-native'
+import React, {useState} from 'react'
+import ColorCounter from '../components/ColorCounter'
+
+//NOTE all cap with an underscore ==> by convention it mean this is a true constant value. A sign to other engineers this is a special variable.
+const COLOR_INCREMENT = 15;
+
+//Use enum of Color for string constant
+enum Color {
+  RED = 'Red',
+  GREEN = 'Green',
+  BLUE = 'Blue'
+}
+
+const SquareScreen: React.FC = () => {
+  //Convert the states of red, blue, green into a state of object with property of red, blue and green
+  //useState is a function that returns an array of two values. The first value is the current state of the variable. The second value is a function that allows you to update the state of the variable.
+
+  const [red, setRed] = useState(180);
+  const [green, setGreen] = useState(180);
+  const [blue, setBlue] = useState(180);
+  console.log('red', red, 'green',green, 'blue',blue);
+
+  // //way 2 to validate the state changes <== not the best
+  // const setColor = (color: string, change: number) => {
+  //   //color === 'red', 'green', 'blue'
+  //   //change === +15, -15
+  //   //NOTE the useState is a function that returns an array of two values. The first value is the current state of the variable. The second value is a function that allows you to update the state of the variable.
+  //   if (color === 'red') {
+  //     if (red + change > 255 || red + change < 0) {
+  //       return;
+  //     } else {
+  //       setRed(red + change);
+  //     }
+  //   }
+  // }
+
+  //way 3 refactor using switch statement to validate the state changes <== best
+const setColor = (color: string, change: number): void => {
+  switch (color) {
+    case 'red':
+      red + change > 255 || red + change < 0 ? null : setRed(red + change);
+      return;
+    case 'green':
+      green + change > 255 || green + change < 0 ? null : setGreen(green + change);
+      return;
+    case 'blue':
+      blue + change > 255 || blue + change < 0 ? null : setBlue(blue + change);
+      return;
+    default:
+      return;
+  }
+}
+
+  // console.log(red);
+  // console.log(green);
+  // console.log(blue);
+
+  return (
+    <View style={styles.container}>
+ {/* way 1 <== not the best way is using if else with || && ! */}
+        <ColorCounter
+        onIncrease={() => setColor('red', COLOR_INCREMENT)}
+          // if (red + COLOR_INCREMENT > 255) {
+          //   return;
+          // }
+        onDecrease={() => setColor('red', -1 * COLOR_INCREMENT)}
+          color="Red"/>
+
+        <ColorCounter
+        onIncrease={() => setColor('green', COLOR_INCREMENT)}
+        onDecrease={() => setColor('green', -1 * COLOR_INCREMENT)}
+        color="Green"/>
+
+        <ColorCounter
+        onIncrease={() => setColor('blue', COLOR_INCREMENT)}
+        onDecrease={() => setColor('blue', -1 * COLOR_INCREMENT)}
+        color="Blue"/>
+
+        <View style={{height: 150, width: 370, backgroundColor: `rgb(${red}, ${green}, ${blue})`}}/>
+        <Text style={styles.textStyle}>{colorLabel(red, green, blue)}</Text>
+
+    </View>
+  )
+}
+
+//add the color label under the color square.
+const colorLabel = (red: number, green: number, blue: number) => {
+  return `(Red: ${red}, Green: ${green}, Blue: ${blue})`;
+}
+
+export default SquareScreen
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    margin: 10,
+    borderRadius: 10
+  },
+  textStyle: {
+    fontSize: 25,
+    color: '#00aa00',
+    textAlign: 'center',
+    paddingTop: 20,
+  },
+})
+
+
+//note SquareScreen <== this need to read the three different state values
+// <== these 3 below need to change the three different states values ==>
+// ==> red
+// ==> green
+// ==> blue
+
+//important generally, we create state variables in the most parent component that needs to read or change a state value
+
+//important If a child need to read a state value, the parent can pass it down as a prop
+//note: ColorCounter doesn't need to read state values! It just needs to pass down the state values to the child
+
+//important if a child need to change the state value, the parent can pass down a callback function to change the state value as a prop "{ onChange: () => {} }"
+```
+
+```TypeScript
+// @filename: ReactComponentSquareScreenScreen.tsx
+import { StyleSheet, Text, View, Button } from 'react-native'
+import React, {useState} from 'react'
+import ColourCounter from '../cpmponents/ColorCounter';
+
+const ReactComponentSquareScreenScreen: React.FC= () => {
+  
+
+  return (
+    <View>
+     <ColorCounter color='Red'/>
+     <ColorCounter color='Blue'/>
+     <ColorCounter color='Green'/>
+    </View>
+  )
+}
+
+export default ReactComponentSquareScreenScreen
+
+const styles = StyleSheet.create({
+  textHeader: {
+    fontSize: 30
+  },
+  textParagraph: {
+    fontSize: 20
+  },
+  buttonStyle: {
+    marginVertical: 20,
+    color: 'red'
+  }
+})
+```
+
+```TypeScript
+// @filename: ColorCounterProps.tsx
+//Add ColorScreen to the parent screen of SquareScreen
+
+import { StyleSheet, Text, View, Button } from 'react-native'
+import React from 'react'
+
+//
+export interface ColorCounterProps {
+  color: string;
+  onIncrease: () => void;
+  onDecrease: () => void;
+}
+
+const ColorCounter = ({color, onIncrease, onDecrease}: ColorCounterProps) => {
+ 
+  return (
+    <View>
+
+      <Text>{color}</Text>
+      <Button onPress={() => onIncrease()} title={`Increase ${color}`} />
+      <Button onPress={() => onDecrease()} title={`Decrease ${color}`} />
+
+    </View>
+  )
+}
+
+export default ColorCounter
+
+const styles = StyleSheet.create({})
+```
+
+```TypeScript
+// @filename: App.tsx
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+
+import ReactComponentButtonScreen from "./ReactComponentButtonScreen";
+import ReactComponentFileScreen from "./ReactComponentFileScreen";
+import ReactComponentListScreen from "./ReactComponentListScreen";
+import ReactComponentImageScreen from "./ReactComponentImageScreen";
+import ReactComponentCounterScreen from "./ReactComponentCounterScreen";
+import ReactComponentColorScreen from "./ReactComponentColorScreen";
+import ReactComponentSquareScreenScreen from "./ReactComponentSquareScreenScreen";
+
+
+const navigator = createStackNavigator(
+  {
+    Home: ReactComponentButtonScreen,
+    Component: ReactComponentFileScreen,
+    List: ReactComponentFileScreen,
+    Image: ReactComponentImageScreen,
+    StateCounter: ReactComponentCounterScreen,
+    StateColor: ReactComponentColorScreen,
+    SquareScreen: ReactComponentSquareScreenScreen
+
+  },
+  {
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+      title: "App",
+    },
+  }
+);
+
+export default createAppContainer(navigator);
+```
+
+<p align="center">(<a href="#top">back to top</a>)</p>
+
 ### Possible Project Work
 
 **I wished to:** <br/>
