@@ -1938,6 +1938,293 @@ export default createAppContainer(navigator);
 
 <p align="center">(<a href="#top">back to top</a>)</p>
 
+**Day 13 React Native: State Management**
+
+- learn how to do the validation of the input and update the state accordingly. Try use different state to achieve the same UI effect and compare the difference.
+
+  1. Add add bounds check for the color values
+  2. Refactor the codes by creating a setColor function and pass in the color and value to update the states of the colors
+
+- You should have a similar screen to the right side if the value is 255/0 and the increase/decrease button will not change the value.
+
+```TypeScript
+// @filename: ReactComponentButtonScreen.tsx
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native'
+import React from 'react'
+
+const ReactComponentButtonScreen: React.FC = ({navigation}: {navigation: any}) => {
+
+  return (
+    <View>
+      <Text style={styles.styleHeader}>
+        Good day!! This is Home Screen
+      </Text>
+
+      <Button
+      color={'#fff'}
+      title="Go to Component Demo"
+      onPress={() => navigation.navigate('Component')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to List Demo"
+      onPress={() => navigation.navigate('List')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to Image Demo"
+      onPress={() => navigation.navigate('Image')}
+      />
+
+       <Button
+       color={'#fff'}
+      title="Go to Hook's Counter Demo"
+      onPress={() => navigation.navigate('StateCounter')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to Hook's Color Demo"
+      onPress={() => navigation.navigate('StateColor')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to refactor Square Demo"
+      onPress={() => navigation.navigate('StateColor')}
+      />
+    </View>
+  );
+};
+
+export default ReactComponentButtonScreen;
+
+const styles = StyleSheet.create({
+  styleHeader: {
+    marginVertical: 20,
+    fontSize: 40,
+    color: 'yellow',
+    backgroundColor: 'lightblue',
+  },
+  styleTouch: {
+    marginVertical: 15,
+    fontSize: 25,
+    color: 'blue',
+    backgroundColor: 'lightyellow',
+  },
+  styleMain: {
+    marginVertical: 10,
+    fontSize: 20,
+    color: 'orange',
+    backgroundColor: 'lightpink'
+  }
+}
+}
+);
+```
+
+```TypeScript
+// @filename: RefactorSquareScreen.tsx
+import React, { useState } from "react";
+import { Text, View } from "react-native";
+import ColorCounter from "../../../components/ColorCounter";
+
+const COLOR_INCREMENT = 15;
+
+const RefactorSquareScreen: React.FC = () => {
+ const [red, setRed] = useState(120);
+ const [green, setGreen] = useState(120);
+ const [blue, setBlue] = useState(120);
+ console.log("red ", red, " green", green, " blue", blue);
+
+ const setColor = (color: string, change: number): void => {
+   switch (color) {
+     case "red":
+       !(red + change > 255 || red + change < 0) && setRed(red + change);
+//or:   red + change <= 255 && red + change >= 0 && setRed(red + change);
+       return;
+     case "green":
+       !(green + change > 255 || green + change < 0) &&
+         setGreen(green + change);
+       return;
+     case "blue":
+       !(blue + change > 255 || blue + change < 0) && setBlue(blue + change);
+       return;
+     default:
+       return;
+   }
+ };
+
+ return (
+   <View style={{ padding: 10 }}>
+     <ColorCounter
+       onIncrease={() => setColor("red", COLOR_INCREMENT)}
+       onDecrease={() => setColor("red", -1 * COLOR_INCREMENT)}
+       color="Red"
+     />
+     <ColorCounter
+       onIncrease={() => setColor("blue", COLOR_INCREMENT)}
+       onDecrease={() => setColor("blue", -1 * COLOR_INCREMENT)}
+       color="Blue"
+     />
+     <ColorCounter
+       onIncrease={() => setColor("green", COLOR_INCREMENT)}
+       onDecrease={() => setColor("green", -1 * COLOR_INCREMENT)}
+       color="Green"
+     />
+     <View
+       style={{
+         height: 150,
+         width: 150,
+         backgroundColor: `rgb(${red},${green},${blue})`,
+       }}
+     />
+     <Text>
+       Red: {red}; Green: {green}; Blue: {blue}
+     </Text>
+   </View>
+ );
+};
+
+export default RefactorSquareScreen;
+```
+
+```TypeScript
+// @filename: SquareRefactorSquareScreenTwo.tsx
+import React, { useState } from "react";
+import { Text, View } from "react-native";
+import ColorCounter from "../../../components/ColorCounter";
+
+const COLOR_INCREMENT = 15;
+enum Color {
+ RED = "Red",
+ GREEN = "Green",
+ BLUE = "Blue",
+}
+const SquareRefactorSquareScreenTwo: React.FC = () => {
+ const [colors, setColors] = useState({ red: 0, green: 120, blue: 120 });
+ const { red, green, blue } = colors;
+
+ const setColor = (color: string, change: number): void => {
+   switch (color) {
+     case Color.RED:
+       !(red + change > 255 || red + change < 0) &&
+         setColors({ ...colors, red: red + change });
+       return;
+     case Color.GREEN:
+       !(green + change > 255 || green + change < 0) &&
+         setColors({ ...colors, green: green + change });
+       return;
+     case Color.BLUE:
+       !(blue + change > 255 || blue + change < 0) &&
+         setColors({ ...colors, blue: blue + change });
+       return;
+     default:
+       return;
+   }
+ };
+
+ return (
+   <View style={{ padding: 10 }}>
+          {[Color.RED, Color.BLUE, Color.GREEN].map(item => (
+       <ColorCounter
+         key={item}
+         onIncrease={() => setColor(item, COLOR_INCREMENT)}
+         onDecrease={() => setColor(item, -1 * COLOR_INCREMENT)}
+         color={item}
+       />
+     ))}
+     <View
+       style={{
+         height: 150,
+         width: 150,
+         backgroundColor: `rgb(${red},${green},${blue})`,
+       }}
+     />
+     <Text>
+       {Color.RED}: {red}; {Color.GREEN}: {green}; {Color.BLUE}: {blue}
+     </Text>
+   </View>
+ );
+};
+
+export default SquareRefactorSquareScreenTwo;
+```
+
+```TypeScript
+// @filename: ColorCounterProps.tsx
+//Add ColorScreen to the parent screen of SquareScreen
+
+import { StyleSheet, Text, View, Button } from 'react-native'
+import React from 'react'
+
+//
+export interface ColorCounterProps {
+  color: string;
+  onIncrease: () => void;
+  onDecrease: () => void;
+}
+
+const ColorCounter = ({color, onIncrease, onDecrease}: ColorCounterProps) => {
+ 
+  return (
+    <View>
+
+      <Text>{color}</Text>
+      <Button onPress={() => onIncrease()} title={`Increase ${color}`} />
+      <Button onPress={() => onDecrease()} title={`Decrease ${color}`} />
+
+    </View>
+  )
+}
+
+export default ColorCounter
+
+const styles = StyleSheet.create({})
+```
+
+```TypeScript
+// @filename: App.tsx
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+
+import ReactComponentButtonScreen from "./ReactComponentButtonScreen";
+import ReactComponentFileScreen from "./ReactComponentFileScreen";
+import ReactComponentListScreen from "./ReactComponentListScreen";
+import ReactComponentImageScreen from "./ReactComponentImageScreen";
+import ReactComponentCounterScreen from "./ReactComponentCounterScreen";
+import ReactComponentColorScreen from "./ReactComponentColorScreen";
+import ReactComponentSquareScreenScreen from "./ReactComponentSquareScreenScreen";
+import RefactorSquareScreen from "./RefactorSquareScreen";
+
+
+const navigator = createStackNavigator(
+  {
+    Home: ReactComponentButtonScreen,
+    Component: ReactComponentFileScreen,
+    List: ReactComponentFileScreen,
+    Image: ReactComponentImageScreen,
+    StateCounter: ReactComponentCounterScreen,
+    StateColor: ReactComponentColorScreen,
+    SquareScreen: ReactComponentSquareScreenScreen,
+    RefactorSquareScreen: RefactorSquareScreen,
+
+  },
+  {
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+      title: "App",
+    },
+  }
+);
+
+export default createAppContainer(navigator);
+```
+
+<p align="center">(<a href="#top">back to top</a>)</p>
+
 ### Possible Project Work
 
 **I wished to:** <br/>
