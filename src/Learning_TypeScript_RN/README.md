@@ -2518,6 +2518,132 @@ export default createAppContainer(navigator);
 
 <p align="center">(<a href="#top">back to top</a>)</p>
 
+**Day 15 React Native: State Management**
+
+- Try to add reducer logic to our CounterScreen
+- Convert counterScreen from useState to useReducer
+  - Change to typescript + code refactor
+    - Change the code from js to typescript and try to refactor.
+    - Replace switch-case by ternary operator due to only two type of action
+
+![Sample Image](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample23.png "style=width:200 height: 200")))
+
+```TypeScript
+//Convert counterScreen from useState to useReducer
+type State = {
+  counter: number;
+}
+
+type Action = {
+  type: string;
+  amount: number;
+}
+
+const reducer = (state: State, action: Action):State => {
+  switch (action.type) {
+    case 'Increase':
+      return { ...state, counter: state.counter + action.amount };
+    case 'Decrease':
+      return { ...state, counter: state.counter - action.amount };
+    default:
+      return state;
+  }
+};
+
+const Counter: React.FC = () => {
+  const [state, dispatch] = useReducer(reducer, { counter: 0 });
+  const { counter } = state;
+
+  return (
+    <View style={styles.container}>
+      <Text>{counter}</Text>
+      <Button
+        title="Increase"
+        onPress={() => dispatch({ type: 'Increase', amount: 1 })}
+      />
+      <Button
+        title="Decrease"
+        onPress={() => dispatch({ type: 'Decrease', amount: 1 })}
+      />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
+  }
+});
+
+const default Counter;
+```
+
+```TypeScript
+// Change the code from js to typescript
+ENUM ActionType {
+  INCREASE = 'Increase',
+  DECREASE = 'Decrease'
+}
+
+type State = {
+  counter: number;
+}
+
+type Action = {
+  type: string;
+}
+
+const initialState: State = {
+  counter: 0
+};
+
+const reducer = ( state: State, action: Action): State => {
+  return (
+    {...state,
+      counter:
+        action.type === ActionType.INCREASE
+          ? state.counter + 1
+          : state.counter - 1
+    }
+  )
+  }
+
+  const Counter: React.FC = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  return (
+    <View style={styles.container}>
+      <Text>{state.counter}</Text>
+      <Button
+        title="Increase"
+        onPress={() => dispatch({ type: ActionType.INCREASE })}
+      />
+      <Button
+        title="Decrease"
+        onPress={() => dispatch({ type: ActionType.DECREASE })}
+      />
+    <Text style={styles.text}>{`Current counter: ${state.counter}`}</Text>
+</View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  text: {
+    fontSize: 30
+  }
+});
+
+export default Counter;
+```
+
+<p align="center">(<a href="#top">back to top</a>)</p>
+
 ### Possible Project Work
 
 **I wished to:** <br/>
