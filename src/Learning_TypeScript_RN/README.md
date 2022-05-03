@@ -122,9 +122,8 @@ const num: number = "num";
   );
 };
 ```
-
 ts(2322) error
-![ts(2322 error)](https://github.com/CraftomeCJ/learningJournal/IMG/PNG/ts(2322)_error.png "style=width:200 height: 200")
+![ts(2322 error)](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/ts2322_error.png "style=width:200 height: 200")
 
 - Typescript BasicTypes:
 <https://www.typescriptlang.org/docs/handbook/2/everyday-types.html>
