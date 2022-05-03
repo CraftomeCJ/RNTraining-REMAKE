@@ -3060,6 +3060,295 @@ export default createAppContainer(navigator);
 
 <p align="center">(<a href="#top">back to top</a>)</p>
 
+**Day 17 React Native Design System**
+
+ - learn the how manipulate the UI to your design
+    - Handling Screen Layout
+      1. flex - will define how your items are going to “fill” over the available space along your main axis.
+      2. flexDirection - controls the direction in which the children of a node are laid out
+      3. justifyContent - describes how to align children within the main axis of their container.
+      4. alignItems - describes how to align children along the cross axis of their container.
+      5. alignSelf - has the same options and effect as alignItems but instead of affecting the children within a container, you can apply this property to a single child to change its alignment within its parent..
+      6. flexWrap - property is set on containers and it controls what happens when children overflow the size of the container along the main axis
+      7. The position type of an element defines how it is positioned within its parent
+      8. relative - By default, an element is positioned relatively. This means an element is positioned according to the normal flow of the layout, and then offset relative to that position based on the values of top, right, bottom, and left. The offset does not affect the position of any sibling or parent elements.
+      9. absolute - when positioned absolutely, an element doesn't take part in the normal layout flow. It is instead laid out independent of its siblings. The position is determined based on the top, right, bottom, and left values
+
+**Layout Systems**
+![Layout Systems](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample27.png "style=width:200 height: 200")))
+
+**Box Object Model**
+![Box Object Model](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample28.png "style=width:200 height: 200")))
+
+**Basic of Box Object Model**
+![Top & Bottom](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample29.png "style=width:200 height: 200")))
+
+![Left & Right](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample30.png "style=width:200 height: 200")))
+
+![shortcuts](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample31.png "style=width:200 height: 200")))
+
+**FlexBox**
+![flexbox](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample32.png "style=width:200 height: 200")))
+
+![layout](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample33.png "style=width:200 height: 200")))
+
+![layout2](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample34.png "style=width:200 height: 200")))
+
+![layout3](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample35.png "style=width:200 height: 200")))
+
+![layout4](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample36.png "style=width:200 height: 200")))
+
+![layout5](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample37.png "style=width:200 height: 200")))
+
+![layout6](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample38.png "style=width:200 height: 200")))
+
+![layout7](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample39.png "style=width:200 height: 200")))
+
+![layout8](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample40.png "style=width:200 height: 200")))
+
+![layout9](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample41.png "style=width:200 height: 200")))
+
+![layout10](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample42.png "style=width:200 height: 200")))
+
+![layout11](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample43.png "style=width:200 height: 200")))
+
+![layout12](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample44.png "style=width:200 height: 200")))
+
+![layout13](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample45.png "style=width:200 height: 200")))
+
+![layout14](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample46.png "style=width:200 height: 200")))
+
+![layout15](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample47.png "style=width:200 height: 200")))
+
+![layout16](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample48.png "style=width:200 height: 200")))
+
+**Applying Layout Systems**
+![Applying Layout Systems](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample49.png "style=width:200 height: 200")))
+
+![sample image](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample50.png "style=width:200 height: 200")))
+
+```TypeScript
+// @filename: ReactComponentButtonScreen.tsx
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native'
+import React from 'react'
+
+const ReactComponentButtonScreen: React.FC = ({navigation}: {navigation: any}) => {
+
+  return (
+    <View>
+      <Text style={styles.styleHeader}>
+        Good day!! This is Home Screen
+      </Text>
+
+      <Button
+      color={'#fff'}
+      title="Go to Component Demo"
+      onPress={() => navigation.navigate('Component')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to List Demo"
+      onPress={() => navigation.navigate('List')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to Image Demo"
+      onPress={() => navigation.navigate('Image')}
+      />
+
+       <Button
+       color={'#fff'}
+      title="Go to Hook's Counter Demo"
+      onPress={() => navigation.navigate('StateCounter')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to Hook's Color Demo"
+      onPress={() => navigation.navigate('StateColor')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to refactor Square Demo"
+      onPress={() => navigation.navigate('StateColor')}
+      />
+    </View>
+
+          <Button
+      color={'#fff'}
+      title="Go to Reducers Square Demo"
+      onPress={() => navigation.navigate('StateColor')}
+      />
+    </View>
+
+              <Button
+      color={'#fff'}
+      title="Go to Text Screen Demo"
+      onPress={() => navigation.navigate('Text')}
+      />
+    </View>
+
+              <Button
+      color={'#fff'}
+      title="Go to Text Input Screen Demo"
+      onPress={() => navigation.navigate('Text')}
+      />
+    </View>
+
+                  <Button
+      color={'#fff'}
+      title="Go to Text Box Screen Demo"
+      onPress={() => navigation.navigate('Box')}
+      />
+    </View>
+
+    
+  );
+};
+
+export default ReactComponentButtonScreen;
+
+const styles = StyleSheet.create({
+  styleHeader: {
+    marginVertical: 20,
+    fontSize: 40,
+    color: 'yellow',
+    backgroundColor: 'lightblue',
+  },
+  styleTouch: {
+    marginVertical: 15,
+    fontSize: 25,
+    color: 'blue',
+    backgroundColor: 'lightyellow',
+  },
+  styleMain: {
+    marginVertical: 10,
+    fontSize: 20,
+    color: 'orange',
+    backgroundColor: 'lightpink'
+  }
+}
+);
+```
+
+```TypeScript
+// @filename: BoxScreen.tsx
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native'
+import React from 'react'
+
+const BoxScreen: React.FC = () => {
+  return (
+    <View style={styles.parentStyle}>
+    <View style={styles.viewOneStyle}/>
+    <View style={styles.viewTwoParent}/>
+    <View style={styles.viewTwoStyle}/>
+    </View>
+    <View style={styles.viewThreeStyle}/>
+    </View>
+  )
+}
+
+const styles = StyleSheet.create({
+  parentStyle: {
+    height: 200,
+    borderWidth: 3,
+    borderColor: 'black',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginVertical: 10,
+    backgroundColor: 'lightblue',
+  },
+  textOneStyle: {
+    height: 50,
+    width: 50,
+    // borderWidth: 3,
+    borderColor: 'red',
+  },
+  textTwoStyle: {
+        height: 50,
+    width: 50,
+    // borderWidth: 3,
+    borderColor: 'green',
+    // top: 50,
+    // alignSelf: 'flex-end',
+    // marginTop: 50,
+    // fontSize: 20,
+    // ...StyleSheet.absoluteFillObject
+  },
+  viewTwoParent: {
+    height: 100,
+    justifyContent: 'flex-end',
+    // width: 50,
+    // borderWidth: 3,
+    // borderColor: 'blue',
+    // top: 50,
+    // alignSelf: 'flex-end',
+    // marginTop: 50,
+    // fontSize: 20,
+    // ...StyleSheet.absoluteFillObject
+  },
+  textThreeStyle: {
+        height: 50,
+    width: 50,
+    // borderWidth: 3,
+    borderColor: 'purple',
+
+})
+
+export default BoxScreen;
+```
+
+```TypeScript
+// @filename: App.tsx
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+
+import ReactComponentButtonScreen from "./ReactComponentButtonScreen";
+import ReactComponentFileScreen from "./ReactComponentFileScreen";
+import ReactComponentListScreen from "./ReactComponentListScreen";
+import ReactComponentImageScreen from "./ReactComponentImageScreen";
+import ReactComponentCounterScreen from "./ReactComponentCounterScreen";
+import ReactComponentColorScreen from "./ReactComponentColorScreen";
+import ReactComponentSquareScreenScreen from "./ReactComponentSquareScreenScreen";
+import RefactorSquareScreen from "./RefactorSquareScreen";
+import ReducersSquareScreen from "./ReducersSquareScreen";
+import TextScreen from "./TextScreen";
+import TextInputScreen from "./TextInputScreen";
+import BoxScreen from "./BoxScreen";
+
+
+const navigator = createStackNavigator(
+  {
+    Home: ReactComponentButtonScreen,
+    Component: ReactComponentFileScreen,
+    List: ReactComponentFileScreen,
+    Image: ReactComponentImageScreen,
+    StateCounter: ReactComponentCounterScreen,
+    StateColor: ReactComponentColorScreen,
+    SquareScreen: ReactComponentSquareScreenScreen,
+    RefactorSquareScreen: RefactorSquareScreen,
+    ReducersSquareScreen: ReducersSquareScreen,
+    Text: TextScreen,
+    TextInput: TextInputScreen,
+    Box: BoxScreen
+  },
+  {
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+      title: "App",
+    },
+  }
+);
+
+export default createAppContainer(navigator);
+```
+
+<p align="center">(<a href="#top">back to top</a>)</p>
+
 ### Possible Project Work
 
 **I wished to:** <br/>
