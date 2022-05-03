@@ -2225,6 +2225,299 @@ export default createAppContainer(navigator);
 
 <p align="center">(<a href="#top">back to top</a>)</p>
 
+**Day 14 React Native: State Management with Reducer**
+
+-  learn the how to manage state with reducers
+
+  - **Reducer**
+The useReducer() hook in React lets you separate the state management from the rendering logic of the component.
+  - useReducer also allows you to manage state and re-render a component whenever that state changes.
+  - Reducer give you more concrete way to handle complex states so it give you set actions that you can perform on your state and it's going to convert your current to a new version fo the state based on the action that you send.
+  - To import reducer
+
+```TypeScript
+import { useReducer } from 'react'.
+```
+  - Reducer going to return an array with two portions
+    1. This first potion is state
+    2. Second things is return a function
+  - `the reducer function is going to take 2 different parameters to start.
+    1. reducer - which is a function that perform on our state to get new state.
+    2. initial value.
+
+```TypeScript
+const [state, dispatch] = useReducer( reducer, {value: 0})
+```
+
+  - dispatch function is essentially what we call in order to update our state.
+  - The reducer function take in two different object
+    1. State - current state
+    2. Action - action that pass into the dispatch function
+  - The reducer going to return new updated state.
+
+```TypeScript
+const reducer( state, action ) = { return value: state.value + 1 }
+```
+
+  - Use dispatch to call the reducer function by with the type of action
+
+```TypeScript
+dispatch( {type: "increment" } );
+```
+
+![Quick Thoughts](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample18.png "style=width:200 height: 200")))
+
+![Quick Thoughts1](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample19.png "style=width:200 height: 200")))
+
+![Quick Thoughts2](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample20.png "style=width:200 height: 200")))
+
+![Quick Thoughts2](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample21.png "style=width:200 height: 200")))
+
+```TypeScript
+// @filename: ReactComponentButtonScreen.tsx
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native'
+import React from 'react'
+
+const ReactComponentButtonScreen: React.FC = ({navigation}: {navigation: any}) => {
+
+  return (
+    <View>
+      <Text style={styles.styleHeader}>
+        Good day!! This is Home Screen
+      </Text>
+
+      <Button
+      color={'#fff'}
+      title="Go to Component Demo"
+      onPress={() => navigation.navigate('Component')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to List Demo"
+      onPress={() => navigation.navigate('List')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to Image Demo"
+      onPress={() => navigation.navigate('Image')}
+      />
+
+       <Button
+       color={'#fff'}
+      title="Go to Hook's Counter Demo"
+      onPress={() => navigation.navigate('StateCounter')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to Hook's Color Demo"
+      onPress={() => navigation.navigate('StateColor')}
+      />
+
+      <Button
+      color={'#fff'}
+      title="Go to refactor Square Demo"
+      onPress={() => navigation.navigate('StateColor')}
+      />
+    </View>
+
+          <Button
+      color={'#fff'}
+      title="Go to Reducers Square Demo"
+      onPress={() => navigation.navigate('StateColor')}
+      />
+    </View>
+  );
+};
+
+export default ReactComponentButtonScreen;
+
+const styles = StyleSheet.create({
+  styleHeader: {
+    marginVertical: 20,
+    fontSize: 40,
+    color: 'yellow',
+    backgroundColor: 'lightblue',
+  },
+  styleTouch: {
+    marginVertical: 15,
+    fontSize: 25,
+    color: 'blue',
+    backgroundColor: 'lightyellow',
+  },
+  styleMain: {
+    marginVertical: 10,
+    fontSize: 20,
+    color: 'orange',
+    backgroundColor: 'lightpink'
+  }
+}
+}
+);
+```
+
+```TypeScript
+// @filename: ReducersSquareScreen.tsx
+import React, { useReducer } from "react";
+import { Text, View } from "react-native";
+import ColorCounterProps from "../../../components/ColorCounter";
+
+const COLOR_INCREMENT = 15;
+
+type RGB = {
+  R: number;
+  G: number;
+  B: number;
+};
+
+type Action = {
+  color: string,
+  amount: number
+};
+
+type Reducer<RGB, Action> = (state: RGB, action: Action) => RGB;
+
+const initialRGB: RGB = {
+  R: 0,
+  G: 0,
+  B: 0
+};
+
+const reducers: ( state: RGB, action: Action): RGB => {
+
+return (action.amount > 255 ) ? { ...state, [action.color as keyof RGB]: 255 } :
+(action.amount < 0) ? { ...state, [action.color as keyof RGB]: 0 } : 
+{...state, [action.color as keyof RGB] : action.amount};
+};
+
+const ReducersSquareScreen: React.FC = () => {
+  const [state, runState] = useReducer< Reducer< RGB, Action > >(reducers, initialRGB);
+  const { R, G, B } = state;
+  return (
+    <View style={styles.container}>
+    <View
+    {
+      Object.keys(state).map((color: keyof RGB) => (
+        <ColorCounterProps
+          key={color}
+          color={color}
+          onIncrease={() => runState({ color, amount: COLOR_INCREMENT })}
+          onDecrease={() => runState({ color, amount: -1 * COLOR_INCREMENT })}
+          disableIncrease={R === 255 && G === 255 && B === 255}
+          disableDecrease={R === 0 && G === 0 && B === 0}
+        />
+      ))
+    }
+
+<View style={styles.container}>
+      <Text style={styles.text}>
+        Red: {R}
+      </Text>
+      <Text style={styles.text}>
+        Green: {G}
+      </Text>
+      <Text style={styles.text}>
+        Blue: {B}
+      </Text>
+    </View>
+    </View>
+  );
+};
+
+export default ReducersSquareScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  text: {
+    fontSize: 30
+  }
+});
+```
+
+```TypeScript
+// @filename: ColorCounterProps.tsx
+//Add ColorScreen to the parent screen of SquareScreen
+
+import { StyleSheet, Text, View, Button } from 'react-native'
+import React from 'react'
+
+//
+export interface ColorCounterProps {
+  color: string;
+  onIncrease: () => void;
+  onDecrease: () => void;
+}
+
+const ColorCounter = ({color, onIncrease, onDecrease}: ColorCounterProps) => {
+ 
+  return (
+    <View>
+
+      <Text>{color}</Text>
+      <Button onPress={() => onIncrease()} title={`Increase ${color}`} />
+      <Button onPress={() => onDecrease()} title={`Decrease ${color}`} />
+
+    </View>
+  )
+}
+
+export default ColorCounter
+
+const styles = StyleSheet.create({})
+```
+
+```TypeScript
+// @filename: App.tsx
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+
+import ReactComponentButtonScreen from "./ReactComponentButtonScreen";
+import ReactComponentFileScreen from "./ReactComponentFileScreen";
+import ReactComponentListScreen from "./ReactComponentListScreen";
+import ReactComponentImageScreen from "./ReactComponentImageScreen";
+import ReactComponentCounterScreen from "./ReactComponentCounterScreen";
+import ReactComponentColorScreen from "./ReactComponentColorScreen";
+import ReactComponentSquareScreenScreen from "./ReactComponentSquareScreenScreen";
+import RefactorSquareScreen from "./RefactorSquareScreen";
+import ReducersSquareScreen from "./ReducersSquareScreen";
+
+
+const navigator = createStackNavigator(
+  {
+    Home: ReactComponentButtonScreen,
+    Component: ReactComponentFileScreen,
+    List: ReactComponentFileScreen,
+    Image: ReactComponentImageScreen,
+    StateCounter: ReactComponentCounterScreen,
+    StateColor: ReactComponentColorScreen,
+    SquareScreen: ReactComponentSquareScreenScreen,
+    RefactorSquareScreen: RefactorSquareScreen,
+    ReducersSquareScreen: ReducersSquareScreen
+
+  },
+  {
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+      title: "App",
+    },
+  }
+);
+
+export default createAppContainer(navigator);
+```
+
+[For exposing useReducer into a global shared state, we have to implement context](https://reactjs.org/docs/context.html)
+
+![Our Action Object Had](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample22.png "style=width:200 height: 200")))
+
+<p align="center">(<a href="#top">back to top</a>)</p>
+
 ### Possible Project Work
 
 **I wished to:** <br/>
