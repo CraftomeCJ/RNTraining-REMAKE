@@ -3348,6 +3348,124 @@ export default createAppContainer(navigator);
 
 <p align="center">(<a href="#top">back to top</a>)</p>
 
+**Day 18 React Native: State Management**
+
+- learn the how manipulate the UI to your design
+  - https://cdn.dribbble.com/users/1814344/screenshots/15432259/media/b70fc856356aa9c3caa2e690d10e986d.mp4
+
+Try making a UI Login flow like this.
+
+Start with a Introduction splash screen
+1. Welcome
+2. What is this app about
+3. What you will gain from your app
+4. Login
+
+E.g. text to fill
+1. Welcome React Native Learners!
+2. This app is meant to fast track your React learning!
+3. React Native from zero to hero
+4. Login
+
+[Link to download assets:](https://drive.google.com/file/d/1bnom-qgtks6jPP1o5o0C2kz0WWi39dC4/view?usp=sharing)
+
+Link to form 3rd party library:
+https://github.com/jaredpalmer/formik
+https://formik.org/docs/guides/react-native
+
+Import gif1 from “./images/gif1.gif”
+
+### UI Login Flow
+
+**Getting Started with TypeScript**
+
+```React
+<!-- use the TypeScript template: -->
+npx react-native init UI_LoginScreen --template react-native-template-typescript
+
+<!-- use Expo -->
+npm install -g expo-cli
+npm install expo
+
+<!-- install dependencies -->
+npm install --legacy-peer-deps
+
+<!-- fix errors -->
+npm audit fix 
+
+<!-- git init -->
+<!-- check git -->
+git status
+<!-- initialize git -->
+git init
+<!-- first commit -->
+git add .
+git commit -m "first commit"
+<!-- change remote branch name to main -->
+git branch -M main
+<!-- add git route -->
+git remote add origin git@github.com:CraftomeCJ/UI_LoginScreen.git
+<!-- check git route -->
+git remote -v
+
+<!-- check tsconfig.json file -->
+​{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "jsx": "react-native",
+    "lib": ["es2017"],
+    "moduleResolution": "node",
+    "noEmit": true,
+    "strict": true,
+    "target": "esnext"
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
+}
+
+<!-- Install Jest -->
+npm install jest --global
+ npm install --save-dev jest
+ <!-- init jest.config.js file -->
+jest init
+<!-- uncomment this following in jest.config.js file -->
+module.exports = {
+  preset: 'react-native',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node']
+};
+
+<!-- open react native bundler for Android emulator -->
+expo start
+
+<!-- first upload -->
+git push -u origin main
+
+- add src directory
+  - add screen directory
+    - add dashboard directory
+    - add welcome directory
+    - add login directory
+  - add component directory
+
+  <!-- second upload -->
+  git add .
+  git commit -m "add src, screen, welcome, login, components directory"
+git push -u origin main
+
+  <!-- branch to start code -->
+git switch -c Login-UI_Design
+```
+
+
+<p align="center">(<a href="#top">back to top</a>)</p>
+
 ### Possible Project Work
 
 **I wished to:** <br/>
