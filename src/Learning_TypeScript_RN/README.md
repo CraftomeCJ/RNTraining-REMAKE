@@ -122,6 +122,7 @@ const num: number = "num";
   );
 };
 ```
+
 ts(2322) error
 ![ts(2322 error)](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/ts2322_error.png "style=width:200 height: 200")
 
@@ -794,7 +795,7 @@ module.exports = {
 - Understand what is flatlist and how it form the list from the datasource
 [more reading](https://reactnative.dev/docs/flatlist)
 
-![Flatlist Element](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/flatlistElement.png" style=width:200 height: 200"))
+![Flatlist Element](<https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/flatlistElement.png>" style=width:200 height: 200"))
 
 - Apply the content of flatlist component to Info page of the react-native-starter project
 - It's an easy way to make an efficient scrolling list of data
@@ -883,7 +884,7 @@ const styles = StyleSheet.create({
 export default ReactComponentFileScreen;
 ```
 
-  -  FlatList Element
+- FlatList Element
     - Turns an array into a list of elements
     - we are required to pass in a 'prop" of 'data' ==> the array of data that we are going to create a bunch of elements out of
     - also required to pass in a 'renderItem' prop ==> function that will turn each individual item into an element
@@ -923,9 +924,9 @@ export default createAppContainer(navigator);
 
 **Day 8 React Native:  Button Element**
 
-- Navigation example: 
+- Navigation example:
 
-  - Understand how to navigate around the screens. 
+  - Understand how to navigate around the screens.
   - **Button & TouchableOpacity**
     - **Button**
     - Very simple component for showing a button and detecting a press
@@ -1107,11 +1108,11 @@ export default createAppContainer(navigator);
 
 **Day 9 React Native: Custom Component**
 
-  - learn the how to create reusable custom components
-    - **Image**
-    - A React component for displaying different types of images, including network images, static resources, temporary local images, and images from local disk, such as the camera roll
-    - Source - The image source (either a remote URL or a local file resource)
-    - The static images are added in app by placing it in somewhere in the source code directory and provide its path as:
+- learn the how to create reusable custom components
+  - **Image**
+  - A React component for displaying different types of images, including network images, static resources, temporary local images, and images from local disk, such as the camera roll
+  - Source - The image source (either a remote URL or a local file resource)
+  - The static images are added in app by placing it in somewhere in the source code directory and provide its path as:
 
 ```TypeScript
  <Image source={require('./icon_name.png')} />
@@ -1123,8 +1124,8 @@ export default createAppContainer(navigator);
  <Image source={{uri: 'https://url_of_image.png'}} style={{width: 60, height: 60}} />
 ```
 
-  - **Reusable Component**
-    - With the growing number of properties and features in the application, even simple reusable components like Button can become complicated as a result of mutations and possible combinations.
+- **Reusable Component**
+  - With the growing number of properties and features in the application, even simple reusable components like Button can become complicated as a result of mutations and possible combinations.
 
 ![Button Element](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample3.png "style=width:200 height: 200"))
 
@@ -1290,20 +1291,20 @@ export default createAppContainer(navigator);
 
 **Day 10 React Native: State Management**
 
-  - learn what is the react native state and how to use state to update the component
-    - **State**
-    - There are two types of data state and props in React Native which control the component.
-    - The component that uses the state is mutable. They can be changed later on if required.
-    - The props component is immutable, and it is fixed throughout the lifetime.
-    - The state is generally initialized in constructor and then call setState when we want to change it.
-    - We never directly modify a state variable. React doesn't detect this change. Only use the "setter" function
-    - We can track any kind of data that changes over time - a number , string, array of object, etc.
-    - When a component is rerendered, all of its children get rerendered too.
-    - A state variable can be passed to a child component. At that point, the state variable is now being used as props.
+- learn what is the react native state and how to use state to update the component
+  - **State**
+  - There are two types of data state and props in React Native which control the component.
+  - The component that uses the state is mutable. They can be changed later on if required.
+  - The props component is immutable, and it is fixed throughout the lifetime.
+  - The state is generally initialized in constructor and then call setState when we want to change it.
+  - We never directly modify a state variable. React doesn't detect this change. Only use the "setter" function
+  - We can track any kind of data that changes over time - a number , string, array of object, etc.
+  - When a component is rerendered, all of its children get rerendered too.
+  - A state variable can be passed to a child component. At that point, the state variable is now being used as props.
 **Why never change the state directly**
-  - You may just replace the update you made.
-  - When you directly update the state, it does not change this.state immediately. Instead, it creates a pending state transition, and accessing it after calling this method will only return the present value.
-   - You will lose control of the state across all components.
+- You may just replace the update you made.
+- When you directly update the state, it does not change this.state immediately. Instead, it creates a pending state transition, and accessing it after calling this method will only return the present value.
+- You will lose control of the state across all components.
 
 ![State Management](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/sample5.png "style=width:200 height: 200"))
 
@@ -1467,8 +1468,8 @@ export default createAppContainer(navigator);
       - set color to and initialize variable
       - const [colors, setColors] = useState( [ "rgb( 0, 0, 0 )" ] )
   - Add variable/object to array
-      - setColors( [...colors,randomRGB()] )
-      - ...colors = An array object which contain all the data
+    - setColors( [...colors,randomRGB()] )
+    - ...colors = An array object which contain all the data
   - Three question:
   1. What piece of data inside this application is changing?
 color
@@ -2205,21 +2206,22 @@ export default createAppContainer(navigator);
 
 **Day 14 React Native: State Management with Reducer**
 
--  learn the how to manage state with reducers
+- learn the how to manage state with reducers
 
-  - **Reducer**
+- **Reducer**
 The useReducer() hook in React lets you separate the state management from the rendering logic of the component.
-  - useReducer also allows you to manage state and re-render a component whenever that state changes.
-  - Reducer give you more concrete way to handle complex states so it give you set actions that you can perform on your state and it's going to convert your current to a new version fo the state based on the action that you send.
-  - To import reducer
+- useReducer also allows you to manage state and re-render a component whenever that state changes.
+- Reducer give you more concrete way to handle complex states so it give you set actions that you can perform on your state and it's going to convert your current to a new version fo the state based on the action that you send.
+- To import reducer
 
 ```TypeScript
 import { useReducer } from 'react'.
 ```
-  - Reducer going to return an array with two portions
+
+- Reducer going to return an array with two portions
     1. This first potion is state
     2. Second things is return a function
-  - `the reducer function is going to take 2 different parameters to start.
+- `the reducer function is going to take 2 different parameters to start.
     1. reducer - which is a function that perform on our state to get new state.
     2. initial value.
 
@@ -2227,17 +2229,17 @@ import { useReducer } from 'react'.
 const [state, dispatch] = useReducer( reducer, {value: 0})
 ```
 
-  - dispatch function is essentially what we call in order to update our state.
-  - The reducer function take in two different object
+- dispatch function is essentially what we call in order to update our state.
+- The reducer function take in two different object
     1. State - current state
     2. Action - action that pass into the dispatch function
-  - The reducer going to return new updated state.
+- The reducer going to return new updated state.
 
 ```TypeScript
 const reducer( state, action ) = { return value: state.value + 1 }
 ```
 
-  - Use dispatch to call the reducer function by with the type of action
+- Use dispatch to call the reducer function by with the type of action
 
 ```TypeScript
 dispatch( {type: "increment" } );
@@ -3061,8 +3063,8 @@ export default createAppContainer(navigator);
 
 **Day 17 React Native Design System**
 
- - learn the how manipulate the UI to your design
-    - Handling Screen Layout
+- learn the how manipulate the UI to your design
+  - Handling Screen Layout
       1. flex - will define how your items are going to “fill” over the available space along your main axis.
       2. flexDirection - controls the direction in which the children of a node are laid out
       3. justifyContent - describes how to align children within the main axis of their container.
@@ -3348,20 +3350,22 @@ export default createAppContainer(navigator);
 
 <p align="center">(<a href="#top">back to top</a>)</p>
 
-**Day 18 React Native: State Management**
+**Day 18 React Native: Design System**
 
 - learn the how manipulate the UI to your design
-  - https://cdn.dribbble.com/users/1814344/screenshots/15432259/media/b70fc856356aa9c3caa2e690d10e986d.mp4
+  - <https://cdn.dribbble.com/users/1814344/screenshots/15432259/media/b70fc856356aa9c3caa2e690d10e986d.mp4>
 
 Try making a UI Login flow like this.
 
 Start with a Introduction splash screen
+
 1. Welcome
 2. What is this app about
 3. What you will gain from your app
 4. Login
 
 E.g. text to fill
+
 1. Welcome React Native Learners!
 2. This app is meant to fast track your React learning!
 3. React Native from zero to hero
@@ -3370,43 +3374,39 @@ E.g. text to fill
 [Link to download assets:](https://drive.google.com/file/d/1bnom-qgtks6jPP1o5o0C2kz0WWi39dC4/view?usp=sharing)
 
 Link to form 3rd party library:
-https://github.com/jaredpalmer/formik
-https://formik.org/docs/guides/react-native
+<https://github.com/jaredpalmer/formik>
+<https://formik.org/docs/guides/react-native>
 
-Import gif1 from “./images/gif1.gif”
+Import gif1 from './images/gif1.gif'
 
-### UI Login Flow
+### UI Login App Work Flow
 
-**Getting Started with TypeScript**
+- **Getting Started with TypeScript**
 
 ```React
-<!-- use the TypeScript template: -->
-npx react-native init UI_LoginScreen --template react-native-template-typescript
+<!-- React native with TypeScript template: -->
+npx react-native init LoginScreen --template react-native-template-typescript
+
+<!-- install dependencies -->
+npm install
+<!-- or -->
+npm install --legacy-peer-deps
 
 <!-- use Expo -->
 npm install -g expo-cli
 npm install expo
+expo doctor --fix-dependencies
+expo upgrade
 
-<!-- install dependencies -->
-npm install --legacy-peer-deps
+<!-- fix vulnerabilities -->
+npm audit fix
+<!-- or -->
+npm audit fix --force
+<!-- or -->
+npm audit fix --legacy-peer-deps
 
-<!-- fix errors -->
-npm audit fix 
-
-<!-- git init -->
-<!-- check git -->
-git status
-<!-- initialize git -->
-git init
-<!-- first commit -->
-git add .
-git commit -m "first commit"
-<!-- change remote branch name to main -->
-git branch -M main
-<!-- add git route -->
-git remote add origin git@github.com:CraftomeCJ/UI_LoginScreen.git
-<!-- check git route -->
-git remote -v
+<!-- open IDE -->
+code .
 
 <!-- check tsconfig.json file -->
 ​{
@@ -3429,8 +3429,8 @@ git remote -v
     "jest.config.js"
   ]
 }
-
-<!-- Install Jest -->
+<!-- check Jest config in package.json file -->
+<!-- Install Jest if necessary -->
 npm install jest --global
  npm install --save-dev jest
  <!-- init jest.config.js file -->
@@ -3441,17 +3441,79 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node']
 };
 
+<!-- install dependencies for Development -->
+<!-- React Native MaskedView for iOS and Android. -->
+npm install --save @react-native-masked-view/masked-view
+<!-- component used to select a single value from a range of values -->
+npm install @react-native-community/slider --save
+<!-- expo-status-bar gives you a component and imperative interface to control the app status bar to change its text color, background color, hide it, make it translucent or opaque, and apply animations to any of these changes. Exactly what you are able to do with the StatusBar component depends on the platform you're using. -->
+expo install expo-status-bar
+<!-- React Native Gesture Handler -->
+npm install --save react-native-gesture-handler
+<!-- React Native Reanimated -->
+expo install react-native-reanimated
+<!-- react-native-safe-area-context -->
+npm install react-native-safe-area-context
+<!-- react-native-screens -->
+expo install react-native-screens
+<!-- React Native Table Component -->
+npm install react-native-table-component
+<!-- React Navigation 6 is made up of some core utilities and those are then used by navigators to create the navigation structure in your app -->
+npm install @react-navigation/native
+<!-- Other supporting libraries for react-navigation -->
+npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view --save
+<!-- React Navigation Stack: for use on iOS and Android. -->
+npm install react-navigation-stack @react-native-community/masked-view react-native-safe-area-context
+<!-- Carousel component for react-native -->
+npm install react-native-carousel
+<!-- styled-components -->
+npm install --save styled-components
+<!-- Navigation Drawer -->
+npm install @react-navigation/drawer --save
+<!-- Stack Navigation -->
+npm install @react-navigation/stack --save
+<!-- async-storage to use AsyncStorage -->
+npm install --save @react-native-community/async-storage
+
 <!-- open react native bundler for Android emulator -->
 expo start
 
-<!-- first upload -->
+<!-- create GitHub remote repo -->
+<!-- Steps for new local repo to remote:
+create a new repository on the command line
+echo "# UI_LoginScreen" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:CraftomeCJ/repo_NAME.git
+git push -u origin main -->
+
+<!-- Create local Repo -->
+<!-- check git -->
+git status
+<!-- initialize git -->
+git init
+<!-- first commit -->
+git add .
+git commit -m "first commit"
+<!-- change remote branch name to main -->
+git branch -M main
+<!-- add git route -->
+git remote add origin git@github.com:CraftomeCJ/RN-TS_LoginScreen.git
+<!-- check git route -->
+git remote -v
+
+<!-- first upload to remote -->
 git push -u origin main
 
+<!-- Add working folder -->
+- add assets directory (for images)
 - add src directory
-  - add screen directory
-    - add dashboard directory
-    - add welcome directory
-    - add login directory
+  - add screens directory
+    - add dashboard directory (dashboard)
+    - add welcome directory (splash screen)
+    - add login directory (login)
   - add component directory
 
   <!-- second upload -->
@@ -3459,10 +3521,62 @@ git push -u origin main
   git commit -m "add src, screen, welcome, login, components directory"
 git push -u origin main
 
-  <!-- branch to start code -->
+  <!-- branch to start development for error tracking -->
 git switch -c Login-UI_Design
 ```
 
+![file structure](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/file1.png "style=width:200 height: 200")
+
+```TypeScript
+//@filename: SplashScreen.tsx.
+//styled-components
+//npm install --save styled-components
+//npm install formik --save
+// npm install yup --save
+// npm install --save @material-ui/core
+
+```
+
+[Create a new repository](https://github.com/new)
+[forms library](https://formik.org/docs/overview)
+
+- errors
+![error image](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/error2.png "style=width:200 height: 200")
+![solution image](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/solution1.png "style=width:200 height: 200")
+[solution](https://docs.expo.dev/workflow/configuration/)
+![result image](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/result1.png "style=width:200 height: 200")
+![error image](https://github.com/CraftomeCJ/RNTraining-REMAKE/blob/main/src/Learning_TypeScript_RN/assets/learningImgs/error01.png "style=width:200 height: 200")
+[Solution](https://stackoverflow.com/questions/63244951/react-native-invariant-violation-module-appregistry-is-not-a-registered-calla)
+[solution2](https://docs.expo.dev/workflow/configuration/)
+-solution ==> expo upgrade
+
+[React Native Expo Failed building JavaScript bundle](https://stackoverflow.com/questions/48266462/react-native-expo-failed-building-javascript-bundle)
+Building JavaScript bundle: error
+solution = expo start -c
+
+[How to modify app.json file and change sdkVersion for an expo snack?](https://stackoverflow.com/questions/54567830/how-to-modify-app-json-file-and-change-sdkversion-for-an-expo-snack)
+
+[React Native – How to Update Expo SDK](https://www.kindacode.com/snippet/react-native-how-to-update-expo-sdk/)
+
+[should NOT have additional property 'nodeModulesPath'(Expo React Native)](https://stackoverflow.com/questions/67111203/should-not-have-additional-property-nodemodulespathexpo-react-native)
+
+[Invariant Violation: Text strings must be rendered within a <Text> component](https://stackoverflow.com/questions/52368342/invariant-violation-text-strings-must-be-rendered-within-a-text-component)
+
+[TypeScript TSConfig CompilerOptions ES2017 Target and Lib](https://stackoverflow.com/questions/42956326/typescript-tsconfig-compileroptions-es2017-target-and-lib)
+
+[Property 'value' does not exist on type 'EventTarget'](https://stackoverflow.com/questions/42066421/property-value-does-not-exist-on-type-eventtarget)
+
+[Error: Unrecognized font family Material Design icons after installing react-native-elements?](https://stackoverflow.com/questions/48601206/error-unrecognized-font-family-material-design-icons-after-installing-react-nat)
+
+[React Native Error: ENOSPC: System limit for number of file watchers reached](https://stackoverflow.com/questions/55763428/react-native-error-enospc-system-limit-for-number-of-file-watchers-reached)
+
+[React-native-splashscreen and navigation](https://stackoverflow.com/questions/60965636/react-native-splashscreen-and-navigation)
+
+<p align="center">(<a href="#top">back to top</a>)</p>
+
+**Day 19 React Native: Restaurant App**
+
+- learn the how to create an app from scratch and create the navigation and search bar
 
 <p align="center">(<a href="#top">back to top</a>)</p>
 
