@@ -661,6 +661,8 @@ this.func1 = function (arg) {
 };
 ```
 
+**Day 4 Typescript Basics: Classes**
+
 <p align="center">(<a href="#top">back to top</a>)</p>
 
 ## Room to improve?
